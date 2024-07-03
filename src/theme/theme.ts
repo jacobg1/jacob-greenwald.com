@@ -173,7 +173,8 @@ export function getTheme(siteTheme: SiteTheme): CustomTheme {
               },
               a: {
                 textDecoration: "none",
-                color: "#0572e1",
+                color: "#014b95",
+                fontWeight: 600,
               },
             },
             "& .divider": divider,

@@ -20,11 +20,11 @@ const projectTabsStyle: SxProps = {
     minWidth: "40px",
     borderRadius: "33px",
     "&:hover": {
-      fontWeight: 900,
-      textDecoration: "underline",
+      fontWeight: 700,
+      textDecoration: "none",
     },
     "&.Mui-selected": {
-      fontWeight: 900,
+      fontWeight: 700,
       backgroundColor: "#ffffff",
     },
   },

@@ -1,6 +1,6 @@
 import { ThemeConfig } from "../theme-type";
 
-const mainColor = "#0572e1";
+const mainColor = "#014b95";
 const secondaryBackground = "#e7e7e7";
 export const mainBackground = "#f5f5f5";
 
