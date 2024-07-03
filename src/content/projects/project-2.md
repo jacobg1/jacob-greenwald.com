@@ -10,4 +10,4 @@ One of my older projects. A search UI that pulls photos from NASA's image API. U
 
 When the user inputs a serch term and hits Go, the front end makes a call to the back end which then makes a call to NASA's image API. Results are returned the backend, procesed and sent to the front end where they are then displayed.
 
-The front end is built in [vue](https://vuejs.org/) with HTML, CSS and JavaScript. The back end is built in [express](https://expressjs.com/), a Node based JavaScript framework. Check out the Github repo for the back end [here](https://github.com/jacobg1/NasaSearch).
+The front end is built in [vue](https://vuejs.org/) with HTML, CSS and JavaScript. The back end is built in [express](https://expressjs.com/), a Node based JavaScript framework. Check out the [Github repo](https://github.com/jacobg1/NasaSearch) for the back end.
