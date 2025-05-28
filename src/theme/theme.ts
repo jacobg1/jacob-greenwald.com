@@ -1,3 +1,5 @@
+import ArrowLeft from "@mui/icons-material/ArrowLeft";
+import ArrowRight from "@mui/icons-material/ArrowRight";
 import { createTheme } from "@mui/material/styles";
 
 import { CustomTheme } from "./theme-type";
@@ -255,6 +257,35 @@ export function getTheme(siteTheme: SiteTheme): CustomTheme {
         styleOverrides: {
           root: {
             backgroundColor: header.backgroundColor,
+          },
+        },
+      },
+      MuiPagination: {
+        defaultProps: {
+          variant: "outlined",
+          shape: "rounded",
+          size: "large",
+        },
+      },
+      MuiPaginationItem: {
+        defaultProps: {
+          slots: { previous: ArrowLeft, next: ArrowRight },
+        },
+        styleOverrides: {
+          root: {
+            borderColor: header.color,
+            border: `2px solid ${header.color}`,
+            "&.Mui-selected": {
+              backgroundColor: header.color,
+              color: "#ffffff",
+              "&:hover": {
+                backgroundColor: header.color,
+                opacity: 0.9,
+              },
+            },
+            "&:hover": {
+              opacity: 0.6,
+            },
           },
         },
       },
