@@ -27,6 +27,11 @@ export interface BlogsListProps<Node = BlogListNode> {
   };
 }
 
+export interface BlogListContext {
+  totalPages: number;
+  currentPage: number;
+}
+
 type BlogResposeNode = {
   id: string;
   fields: {
