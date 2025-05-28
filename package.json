@@ -22,8 +22,7 @@
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
     "@svgr/webpack": "^8.1.0",
-    "axios": "^1.7.2",
-    "gatsby": "^5.13.7",
+    "gatsby": "^5.14.3",
     "gatsby-omni-font-loader": "^2.0.2",
     "gatsby-plugin-emotion": "^8.13.1",
     "gatsby-plugin-image": "^3.13.1",
@@ -68,7 +67,6 @@
     "webpack-dev-middleware": "^5.3.4"
   },
   "overrides": {
-    "webpack-dev-middleware": "$webpack-dev-middleware",
-    "axios": "$axios"
+    "webpack-dev-middleware": "$webpack-dev-middleware"
   }
 }
