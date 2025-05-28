@@ -1,12 +1,9 @@
 import * as React from "react";
 
-// import ArrowLeft from "@mui/icons-material/ArrowLeft";
-// import ArrowRight from "@mui/icons-material/ArrowRight";
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-// import Typography from "@mui/material/Typography";
 import { graphql, type PageProps, Link as InternalLink } from "gatsby";
 
 import { BlogListItem } from "../components/blog/blog-list-item";
@@ -34,7 +31,6 @@ const BlogListPage = ({
         {nodes.map(({ id, ...post }) => (
           <BlogListItem key={id} {...post} />
         ))}
-        {/* <Typography variant="body1">More posts coming soon!</Typography> */}
         {totalPages > 1 ? (
           <Pagination
             sx={{
@@ -42,9 +38,6 @@ const BlogListPage = ({
             }}
             count={totalPages}
             page={currentPage}
-            // variant="outlined"
-            // shape="rounded"
-            // size="large"
             renderItem={(item) => (
               <PaginationItem
                 component={InternalLink}
@@ -52,10 +45,6 @@ const BlogListPage = ({
                 {...item}
               />
             )}
-            // onChange={(_, page) => {
-            //   const navigateTo = page === 1 ? "/blog/" : `/blog/${page}/`;
-            //   navigate(navigateTo);
-            // }}
           />
         ) : null}
       </Box>
