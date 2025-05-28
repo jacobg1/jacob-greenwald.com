@@ -88,6 +88,22 @@ export const createPages: GatsbyNode["createPages"] = async ({
     });
   });
 
+  const postsPerPage = 3;
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  Array.from({ length: totalPages }).forEach((_, index) => {
+    createPage({
+      path: index === 0 ? `/blog` : `/blog/${index + 1}`,
+      component: path.resolve("./src/templates/blog-list.tsx"),
+      context: {
+        limit: postsPerPage,
+        skip: index * postsPerPage,
+        totalPages,
+        currentPage: index + 1,
+      },
+    });
+  });
+
   const tags = get(blogPosts, "data.tagsData.group");
 
   if (!tags?.length) {
