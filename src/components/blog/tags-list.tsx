@@ -9,13 +9,16 @@ import { Link as InternalLink } from "gatsby";
 import { createTagPageLink } from "../../utils";
 
 const tagsListStyles: SxProps = {
-  margin: "15px 0 0 0",
+  margin: "5px 0 0 0",
+  flexWrap: "wrap",
 };
 
 const chipStyles: SxProps = {
   color: "#000000",
   backgroundColor: "#FFFFFF",
   fontWeight: 900,
+  marginTop: "10px",
+  marginRight: { xs: "5px", sm: "10px", md: "15px" },
   "& .MuiChip-label": {
     paddingTop: { xs: "2px", sm: "4px" },
   },
@@ -33,7 +36,7 @@ export const TagsList = ({ tags }: TagsListProps): JSX.Element | null => {
   if (!tags?.length) return null;
 
   return (
-    <Stack sx={tagsListStyles} direction="row" spacing={{ xs: 0.4, sm: 2 }}>
+    <Stack sx={tagsListStyles} direction="row">
       {tags.map((tag) => (
         <Chip
           sx={chipStyles}
