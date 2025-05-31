@@ -273,6 +273,7 @@ export function getTheme(siteTheme: SiteTheme): CustomTheme {
         },
         styleOverrides: {
           root: {
+            paddingTop: "2px",
             borderColor: header.color,
             border: `2px solid ${header.color}`,
             "&.Mui-selected": {

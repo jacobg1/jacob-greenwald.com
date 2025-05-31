@@ -15,6 +15,9 @@ const blogListStyles: SxProps = {
   maxWidth: "800px",
   width: { md: "70%" },
   margin: { xs: "30px 0", md: "60px auto" },
+  "& .MuiPagination-root": {
+    paddingTop: "20px",
+  },
 };
 
 const BlogListPage = ({
@@ -33,9 +36,6 @@ const BlogListPage = ({
         ))}
         {totalPages > 1 ? (
           <Pagination
-            sx={{
-              paddingTop: "20px",
-            }}
             count={totalPages}
             page={currentPage}
             renderItem={(item) => (
