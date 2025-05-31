@@ -3,8 +3,7 @@ import * as React from "react";
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
-import PaginationItem from "@mui/material/PaginationItem";
-import { graphql, type PageProps, Link as InternalLink } from "gatsby";
+import { graphql, type PageProps, navigate } from "gatsby";
 
 import { BlogListItem } from "../components/blog/blog-list-item";
 import { PageMeta } from "../components/global/page-meta";
@@ -38,13 +37,11 @@ const BlogListPage = ({
           <Pagination
             count={totalPages}
             page={currentPage}
-            renderItem={(item) => (
-              <PaginationItem
-                component={InternalLink}
-                to={item.page === 1 ? "/blog/" : `/blog/${item.page}/`}
-                {...item}
-              />
-            )}
+            shape="rounded"
+            onChange={(_, value: number) => {
+              const pageUrl = value === 1 ? "/blog" : `/blog/${value}`;
+              navigate(pageUrl);
+            }}
           />
         ) : null}
       </Box>
