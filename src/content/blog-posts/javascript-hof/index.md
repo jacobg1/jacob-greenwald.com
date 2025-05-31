@@ -2,6 +2,7 @@
 title: JavaScript HOF
 date: "2025-05-28"
 description: Higher order functions in JavaScript.
+postOrder: 3
 tags: ["JavaScript", "Advanced"]
 skillLevel: +++
 ---
