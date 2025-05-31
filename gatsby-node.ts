@@ -1,6 +1,5 @@
 import path from "path";
 import { GatsbyNode } from "gatsby";
-import { get } from "lodash";
 import { createFilePath } from "gatsby-source-filesystem";
 import { BlogPostsResponse } from "./src/types";
 import { createTagPageSlug } from "./src/utils";
@@ -12,13 +11,13 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
 }) => {
   const { createNodeField } = actions;
 
-  if (get(node, "internal.type") === "MarkdownRemark") {
-    const parent = getNode(get(node, "parent") || "");
+  if (node?.internal?.type === "MarkdownRemark") {
+    const parent = getNode(node?.parent || "");
 
     createNodeField({
       node,
       name: "collection",
-      value: get(parent, "sourceInstanceName"),
+      value: parent?.sourceInstanceName,
     });
 
     const slug = createFilePath({ node, getNode });
@@ -70,7 +69,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
     return;
   }
 
-  const posts = get(blogPosts, "data.postsData.nodes");
+  const posts = blogPosts?.data?.postsData?.nodes;
 
   if (!posts?.length) {
     return;
@@ -104,7 +103,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
     });
   });
 
-  const tags = get(blogPosts, "data.tagsData.group");
+  const tags = blogPosts?.data?.tagsData?.group;
 
   if (!tags?.length) {
     return;
