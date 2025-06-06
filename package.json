@@ -66,6 +66,8 @@
     "webpack-dev-middleware": "^5.3.4"
   },
   "overrides": {
-    "webpack-dev-middleware": "$webpack-dev-middleware"
+    "webpack-dev-middleware": "$webpack-dev-middleware",
+		"cookie": "0.7.1",
+		"path-to-regexp": "0.1.12"
   }
 }
