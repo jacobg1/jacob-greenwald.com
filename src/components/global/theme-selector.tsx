@@ -90,21 +90,18 @@ export function ThemeSelector(): JSX.Element {
       >
         <Box className="theme-button-container button-row-1">
           <ThemeSelectorButton
-            label="Silver"
             themeOption={SiteTheme.SILVER}
             selectedTheme={siteTheme}
             setSiteTheme={setSiteTheme}
             handleClose={handleClose}
           />
           <ThemeSelectorButton
-            label="Gold"
             themeOption={SiteTheme.GOLD}
             selectedTheme={siteTheme}
             setSiteTheme={setSiteTheme}
             handleClose={handleClose}
           />
           <ThemeSelectorButton
-            label="Bronze"
             themeOption={SiteTheme.BRONZE}
             selectedTheme={siteTheme}
             setSiteTheme={setSiteTheme}
@@ -113,8 +110,13 @@ export function ThemeSelector(): JSX.Element {
         </Box>
         <Box className="theme-button-container button-row-2">
           <ThemeSelectorButton
-            label="Classic"
             themeOption={SiteTheme.CLASSIC}
+            selectedTheme={siteTheme}
+            setSiteTheme={setSiteTheme}
+            handleClose={handleClose}
+          />
+          <ThemeSelectorButton
+            themeOption={SiteTheme.NEON}
             selectedTheme={siteTheme}
             setSiteTheme={setSiteTheme}
             handleClose={handleClose}

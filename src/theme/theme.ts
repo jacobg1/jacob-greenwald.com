@@ -12,6 +12,8 @@ import {
   silverThemeColor,
   classicTheme,
   classicThemeColor,
+  neonTheme,
+  neonThemeColor,
 } from "./themes";
 import { SiteTheme } from "../types/enum";
 
@@ -20,6 +22,7 @@ const themeMap = {
   [SiteTheme.GOLD]: goldTheme,
   [SiteTheme.BRONZE]: bronzeTheme,
   [SiteTheme.CLASSIC]: classicTheme,
+  [SiteTheme.NEON]: neonTheme,
 };
 
 export function getTheme(siteTheme: SiteTheme): CustomTheme {
@@ -242,6 +245,10 @@ export function getTheme(siteTheme: SiteTheme): CustomTheme {
             },
             "& .classic-theme": {
               backgroundColor: classicThemeColor,
+            },
+            "& .neon-theme": {
+              backgroundColor: neonThemeColor,
+              marginLeft: "6px",
             },
           },
         },
