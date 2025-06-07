@@ -130,7 +130,6 @@ export interface ProjectIconProps {
 }
 
 export interface ThemeSelectorButtonProps {
-  label: string;
   themeOption: SiteTheme;
   selectedTheme: SiteTheme;
   setSiteTheme: Dispatch<SetStateAction<SiteTheme | null>>;
