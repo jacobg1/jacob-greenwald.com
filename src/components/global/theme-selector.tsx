@@ -19,6 +19,8 @@ const themeSelectorStyles: SxProps = {
     fontWeight: 900,
     "&:hover": {
       borderWidth: "2px",
+      background: "#ffffff",
+      boxShadow: "1px 1px 1px black",
     },
     "& .MuiButton-icon": {
       paddingBottom: "2px",
