@@ -28,9 +28,6 @@ const appBarStyles: SxProps = {
   "& .MuiIconButton-root": {
     color: "#000000",
   },
-  "& .header-emojis": {
-    fontSize: { xs: "18px", sm: "17px", md: "22px" },
-  },
 };
 
 export const SiteHeader = (): JSX.Element => {
