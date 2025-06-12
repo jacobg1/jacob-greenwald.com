@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import { Link } from "gatsby";
 
 import { DesktopHeader } from "./desktop-header";
+import { HeaderEmoji } from "./header-emoji";
 import { MobileHeader } from "./mobile-header";
 import { useNavLinksQuery } from "../../hooks/use-navlinks-query";
 import { NavLinkItem } from "../../types";
@@ -27,8 +28,8 @@ const appBarStyles: SxProps = {
   "& .MuiIconButton-root": {
     color: "#000000",
   },
-  "& .pizza": {
-    fontSize: { xs: "18px", sm: "22px" },
+  "& .header-emojis": {
+    fontSize: { xs: "18px", sm: "17px", md: "22px" },
   },
 };
 
@@ -46,10 +47,7 @@ export const SiteHeader = (): JSX.Element => {
           </Link>
         </Typography>
         <Typography component="span">
-          Software Engineer{" "}
-          <Box component="span" className="pizza">
-            🍕
-          </Box>
+          Software Engineer <HeaderEmoji />
         </Typography>
       </Box>
       <DesktopHeader navLinks={navLinks} />

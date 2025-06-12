@@ -1,3 +1,5 @@
+import { SiteTheme } from "../types";
+
 export function createTagPageSlug(tagName: string): string {
   return tagName.toLocaleLowerCase().replace(/ /g, "-");
 }
@@ -28,3 +30,7 @@ export const includesTags = (
 export function capitalizeWord(word: string): string {
   return word[0].toUpperCase() + word.slice(1).toLocaleLowerCase();
 }
+
+export const isWackyTheme = (siteTheme: SiteTheme): boolean => {
+  return siteTheme === SiteTheme.WACKY;
+};
