@@ -38,7 +38,7 @@ export const goldTheme: ThemeConfig = {
     color: buttonColor,
     backgroundColor: buttonBackground,
     "&:hover": {
-      border: border1px,
+      border: border2px,
     },
   },
   iconColor: mainColor,
