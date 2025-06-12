@@ -7,7 +7,7 @@ tags: ["JavaScript", "Basics", "Setup"]
 skillLevel: +
 ---
 
-JavaScript is a amazing language that runs in both the browser and the server.  Wondering what you can do with JavaScript?  With JS you can:
+JavaScript is an amazing language that runs in both the browser and the server.  Wondering what you can do with JavaScript?  With JS you can:
 
 1. Build websites and user interfaces
 2. Create webservers
