@@ -42,7 +42,7 @@ const skillsSectionStyles: SxProps = {
     display: "flex",
     alignItems: "center",
   },
-  "& .skills-emoji": {
+  "& .robot-arm": {
     padding: "0 0 4px 5px",
     fontSize: { xs: "18px", sm: "22px", lg: "24px" },
   },
@@ -63,9 +63,7 @@ export const SkillsList = (): JSX.Element => {
       <Box sx={skillsHeaderStyles}>
         <Typography className="skills-header" variant="h3">
           Skills
-          <Box className="skills-emoji">
-            <EmojiContainer name="robot-arm">🦾</EmojiContainer>
-          </Box>
+          <EmojiContainer name="robot-arm">🦾</EmojiContainer>
         </Typography>
         <SkillIconsKey />
       </Box>
