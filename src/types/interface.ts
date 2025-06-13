@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { type Dispatch, type ReactNode, type SetStateAction } from "react";
 
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
@@ -134,4 +134,9 @@ export interface ThemeSelectorButtonProps {
   selectedTheme: SiteTheme;
   setSiteTheme: Dispatch<SetStateAction<SiteTheme | null>>;
   handleClose: () => void;
+}
+
+export interface EmojiProps {
+  name: string;
+  children: ReactNode;
 }

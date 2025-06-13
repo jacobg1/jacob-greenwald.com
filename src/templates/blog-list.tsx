@@ -17,6 +17,10 @@ const blogListStyles: SxProps = {
   "& .MuiPagination-root": {
     paddingTop: "20px",
   },
+  "& .emoji": {
+    fontSize: "32px",
+    marginLeft: "7px",
+  },
 };
 
 const BlogListPage = ({
@@ -29,7 +33,10 @@ const BlogListPage = ({
     <>
       <PageMeta metaTitle="Blog" />
       <Box sx={blogListStyles}>
-        <TitleWithDivider title="Blog Posts" />
+        <TitleWithDivider
+          title="Blog Posts"
+          emojiConfig={{ emoji: "☕️", name: "coffee" }}
+        />
         {nodes.map(({ id, ...post }) => (
           <BlogListItem key={id} {...post} />
         ))}

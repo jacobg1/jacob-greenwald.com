@@ -19,6 +19,8 @@ const themeSelectorStyles: SxProps = {
     fontWeight: 900,
     "&:hover": {
       borderWidth: "2px",
+      background: "#ffffff",
+      boxShadow: "1px 1px 1px black",
     },
     "& .MuiButton-icon": {
       paddingBottom: "2px",
@@ -30,7 +32,8 @@ const themePopoverStyles: SxProps = {
   "& .MuiPopover-paper": {
     width: "100%",
     maxWidth: "330px",
-    padding: { xs: "12px 1px", sm: "12px 5px" },
+    minWidth: "320px",
+    padding: "8px 1px",
   },
   "& .MuiChip-label": {
     paddingLeft: "25px",
@@ -39,15 +42,13 @@ const themePopoverStyles: SxProps = {
     fontWeight: 900,
   },
   "& .MuiChip-root": {
+    margin: "4px 3px 4px 4px",
     width: "31%",
   },
   "& .theme-button-container": {
     width: "100%",
     display: "flex",
-    justifyContent: "space-evenly",
-  },
-  "& .button-row-2": {
-    margin: "10px 0 0 6px",
+    flexWrap: "wrap",
     justifyContent: "flex-start",
   },
 };
@@ -83,44 +84,22 @@ export function ThemeSelector(): JSX.Element {
         })}
         anchorEl={anchorEl}
         onClose={handleClose}
+        disableScrollLock={true}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "left",
         }}
       >
-        <Box className="theme-button-container button-row-1">
-          <ThemeSelectorButton
-            themeOption={SiteTheme.SILVER}
-            selectedTheme={siteTheme}
-            setSiteTheme={setSiteTheme}
-            handleClose={handleClose}
-          />
-          <ThemeSelectorButton
-            themeOption={SiteTheme.GOLD}
-            selectedTheme={siteTheme}
-            setSiteTheme={setSiteTheme}
-            handleClose={handleClose}
-          />
-          <ThemeSelectorButton
-            themeOption={SiteTheme.BRONZE}
-            selectedTheme={siteTheme}
-            setSiteTheme={setSiteTheme}
-            handleClose={handleClose}
-          />
-        </Box>
-        <Box className="theme-button-container button-row-2">
-          <ThemeSelectorButton
-            themeOption={SiteTheme.CLASSIC}
-            selectedTheme={siteTheme}
-            setSiteTheme={setSiteTheme}
-            handleClose={handleClose}
-          />
-          <ThemeSelectorButton
-            themeOption={SiteTheme.NEON}
-            selectedTheme={siteTheme}
-            setSiteTheme={setSiteTheme}
-            handleClose={handleClose}
-          />
+        <Box className="theme-button-container">
+          {Object.values(SiteTheme).map((themeOption) => (
+            <ThemeSelectorButton
+              key={`theme-button-${themeOption}`}
+              themeOption={themeOption}
+              selectedTheme={siteTheme}
+              setSiteTheme={setSiteTheme}
+              handleClose={handleClose}
+            />
+          ))}
         </Box>
       </Popover>
       <Button

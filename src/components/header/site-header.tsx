@@ -11,7 +11,8 @@ import { Link } from "gatsby";
 import { DesktopHeader } from "./desktop-header";
 import { MobileHeader } from "./mobile-header";
 import { useNavLinksQuery } from "../../hooks/use-navlinks-query";
-import { NavLinkItem } from "../../types";
+import { NavLinkItem, SiteTheme } from "../../types";
+import { ThemeEmoji } from "../global/emoji";
 
 const appBarStyles: SxProps = {
   padding: { xs: "17px", sm: "20px", md: "25px" },
@@ -27,10 +28,25 @@ const appBarStyles: SxProps = {
   "& .MuiIconButton-root": {
     color: "#000000",
   },
-  "& .pizza": {
-    fontSize: { xs: "18px", sm: "22px" },
-  },
 };
+
+const emojiConfig = [
+  {
+    emoji: "🍕",
+    name: "pizza",
+    theme: { not: [SiteTheme.NEON, SiteTheme.CAKE] },
+  },
+  {
+    emoji: "😎",
+    name: "sunglasses-face",
+    theme: { is: [SiteTheme.NEON] },
+  },
+  {
+    emoji: "🍰",
+    name: "shortcake",
+    theme: { is: [SiteTheme.CAKE] },
+  },
+];
 
 export const SiteHeader = (): JSX.Element => {
   const navLinks = useNavLinksQuery<NavLinkItem[]>();
@@ -46,10 +62,7 @@ export const SiteHeader = (): JSX.Element => {
           </Link>
         </Typography>
         <Typography component="span">
-          Software Engineer{" "}
-          <Box component="span" className="pizza">
-            🍕
-          </Box>
+          Software Engineer <ThemeEmoji emojis={emojiConfig} />
         </Typography>
       </Box>
       <DesktopHeader navLinks={navLinks} />

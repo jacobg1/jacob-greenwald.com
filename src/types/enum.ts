@@ -4,6 +4,7 @@ export enum SiteTheme {
   BRONZE = "BRONZE",
   CLASSIC = "CLASSIC",
   NEON = "NEON",
+  CAKE = "CAKE",
 }
 
 export enum ProjectIconName {

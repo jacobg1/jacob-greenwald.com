@@ -8,6 +8,7 @@ import { SingleSkill } from "./single-skill";
 import { SkillIconsKey } from "./skill-icons-key";
 import { useSkillsQuery } from "../../hooks/use-skills-query";
 import { Skill } from "../../types";
+import { EmojiContainer } from "../global/emoji";
 
 const skillsListStyles: SxProps = {
   display: "flex",
@@ -62,9 +63,7 @@ export const SkillsList = (): JSX.Element => {
       <Box sx={skillsHeaderStyles}>
         <Typography className="skills-header" variant="h3">
           Skills
-          <Box component="span" className="robot-arm">
-            🦾
-          </Box>
+          <EmojiContainer name="robot-arm">🦾</EmojiContainer>
         </Typography>
         <SkillIconsKey />
       </Box>

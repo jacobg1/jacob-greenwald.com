@@ -1,17 +1,18 @@
 import { ThemeConfig } from "../theme-type";
 
-const mainColor = "#014b95";
-const secondaryBackground = "#e7e7e7";
-const mainBackground = "#f5f5f5";
-
-const border2px = `2px solid ${mainColor}`;
-const border1px = `1px solid ${mainColor}`;
+const mainColor = "#a90000";
+const mainBackground = "#cafaff";
+const secondaryBackground = "#ffd8d8";
 
 const buttonBackground = "#ffffff";
 const buttonColor = "#000000";
 const textColor = "#000000";
 
-export const silverTheme: ThemeConfig = {
+const borderPrimary = `2px solid ${mainColor}`;
+const borderSecondary = `2px dashed ${mainColor}`;
+const borderTertiary = `2px solid ${textColor}`;
+
+export const cakeTheme: ThemeConfig = {
   text: {
     color: textColor,
   },
@@ -19,26 +20,26 @@ export const silverTheme: ThemeConfig = {
     backgroundColor: mainBackground,
   },
   header: {
-    color: mainColor,
+    color: textColor,
     backgroundColor: secondaryBackground,
-    borderBottom: border2px,
+    borderBottom: borderPrimary,
   },
   footer: {
     backgroundColor: secondaryBackground,
-    borderTop: border2px,
+    borderTop: borderPrimary,
   },
   main: {
     backgroundColor: mainBackground,
   },
   divider: {
-    border: border1px,
+    border: borderSecondary,
   },
   button: {
-    border: border2px,
+    border: borderTertiary,
     color: buttonColor,
     backgroundColor: buttonBackground,
     "&:hover": {
-      border: border2px,
+      border: borderTertiary,
     },
   },
   iconColor: mainColor,
@@ -51,4 +52,4 @@ export const silverTheme: ThemeConfig = {
   },
 };
 
-export const silverThemeColor = secondaryBackground;
+export const cakeThemeColor = secondaryBackground;
