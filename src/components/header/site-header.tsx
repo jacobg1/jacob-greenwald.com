@@ -34,7 +34,7 @@ const emojiConfig = [
   {
     emoji: "🍕",
     name: "pizza",
-    theme: { not: [SiteTheme.NEON, SiteTheme.WACKY] },
+    theme: { not: [SiteTheme.NEON, SiteTheme.CAKE] },
   },
   {
     emoji: "😎",
@@ -42,9 +42,9 @@ const emojiConfig = [
     theme: { is: [SiteTheme.NEON] },
   },
   {
-    emoji: "🤡",
-    name: "clown-face",
-    theme: { is: [SiteTheme.WACKY] },
+    emoji: "🍰",
+    name: "shortcake",
+    theme: { is: [SiteTheme.CAKE] },
   },
 ];
 
