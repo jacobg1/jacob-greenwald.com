@@ -4,12 +4,12 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Link from "@mui/material/Link";
 import { styled } from "@mui/system";
 import { globalHistory } from "@reach/router";
 
 import { MobileHeaderProps } from "../../types";
 import { SiteLinks } from "../global/navigation";
+import { SiteEmail } from "../global/site-email";
 
 const mobileHeaderStyles: SxProps = {
   "& .link-holder": {
@@ -19,7 +19,7 @@ const mobileHeaderStyles: SxProps = {
     justifyContent: "space-around",
     height: "30%",
   },
-  svg: {
+  "& .close-button": {
     width: "30px",
     height: "30px",
     cursor: "pointer",
@@ -46,11 +46,11 @@ export const MobileHeader = ({
   return (
     <Drawer anchor="right" open={isOpen} onClose={onClick}>
       <MobileHeaderContainer sx={mobileHeaderStyles}>
-        <HighlightOffIcon onClick={onClick} />
+        <HighlightOffIcon className="close-button" onClick={onClick} />
         <Box className="link-holder">
           <SiteLinks navLinks={navLinks} />
         </Box>
-        <Link href="mailto:greenwald.j8@gmail.com">greenwald.j8@gmail.com</Link>
+        <SiteEmail isMobileHeader />
       </MobileHeaderContainer>
     </Drawer>
   );

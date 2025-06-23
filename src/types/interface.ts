@@ -92,6 +92,7 @@ export interface ProjectsListContent {
 
 export interface SiteMetadata {
   title: string;
+  email: string;
   description: string;
   keywords: string[];
   siteUrl: string;
@@ -139,4 +140,13 @@ export interface ThemeSelectorButtonProps {
 export interface EmojiProps {
   name: string;
   children: ReactNode;
+}
+
+export interface CopyToClipboardProps {
+  value: string;
+  isMobileHeader: boolean;
+}
+
+export interface SiteEmailProps {
+  isMobileHeader?: boolean;
 }

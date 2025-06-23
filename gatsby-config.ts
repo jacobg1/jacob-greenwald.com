@@ -14,6 +14,7 @@ const gatsbyRequiredRules = path.join(
 const config: GatsbyConfig = {
   siteMetadata: {
     title: "Jacob Greenwald's Portfolio",
+    email: "greenwald.j8@gmail.com",
     description:
       "A creative thinker who uses ingenuity to find innovative solutions to challenging problems. I create success by drawing on my dedication, persistence and passion for building software and customer experiences.",
     keywords: [

@@ -1,12 +1,13 @@
 import { graphql, useStaticQuery } from "gatsby";
 
-import { MetadataQuery } from "../types";
+import type { MetadataQuery } from "../types";
 
 const query = graphql`
   query PageMeta {
     site {
       siteMetadata {
         title
+        email
         description
         keywords
         siteUrl

@@ -2,13 +2,12 @@ import * as React from "react";
 
 import { type SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
 import { styled } from "@mui/system";
 
 import { SiteLinks } from "./navigation";
+import { SiteEmail } from "./site-email";
 import { useNavLinksQuery } from "../../hooks/use-navlinks-query";
-import { NavLinkItem } from "../../types";
+import type { NavLinkItem } from "../../types";
 
 const footerStyles: SxProps = {
   padding: { xs: "16px 17px", sm: 0 },
@@ -27,11 +26,8 @@ const footerStyles: SxProps = {
   },
   "& .email": {
     textAlign: "center",
-    fontSize: { sm: "18px" },
+    fontSize: { sm: "20px" },
     padding: { xs: "10px 0 0", sm: "0 0 25px" },
-    a: {
-      color: "black",
-    },
   },
 };
 
@@ -49,9 +45,7 @@ export const SiteFooter = (): JSX.Element => {
       <Box className="footer-container">
         <SiteLinks navLinks={navLinks} />
       </Box>
-      <Typography className="email" variant="body1">
-        <Link href="mailto:greenwald.j8@gmail.com">greenwald.j8@gmail.com</Link>
-      </Typography>
+      <SiteEmail />
     </Footer>
   );
 };
