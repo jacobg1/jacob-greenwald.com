@@ -20,22 +20,21 @@ export function CopyToClipboard({
 }: CopyToClipboardProps): JSX.Element | null {
   const [copied, setCopied] = useState(false);
 
-  const copyValue = useCallback(() => {
-    if (!value) return;
+  const copyValue = useCallback((valueToCopy: string) => {
     const handleCopyValue = async (): Promise<void> => {
       try {
-        await navigator.clipboard.writeText(value);
-        setCopied(true);
+        await navigator.clipboard.writeText(valueToCopy);
+        setCopied(!!valueToCopy);
       } catch {
         throw new Error("Failed to copy value");
       }
     };
     handleCopyValue().catch(console.error);
-  }, [value]);
+  }, []);
 
   if (copied) {
     return (
-      <LibraryAddCheckIcon sx={iconStyles} onClick={() => setCopied(false)} />
+      <LibraryAddCheckIcon sx={iconStyles} onClick={() => copyValue("")} />
     );
   }
 
@@ -45,7 +44,7 @@ export function CopyToClipboard({
       enterDelay={250}
       placement={isMobileHeader ? "top" : "right"}
     >
-      <ContentCopyIcon onClick={copyValue} sx={iconStyles} />
+      <ContentCopyIcon sx={iconStyles} onClick={() => copyValue(value)} />
     </Tooltip>
   );
 }
