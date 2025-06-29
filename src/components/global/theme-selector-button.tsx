@@ -3,7 +3,6 @@ import * as React from "react";
 import Chip from "@mui/material/Chip";
 
 import { ThemeSelectorButtonProps } from "../../types";
-import { SITE_THEME_KEY } from "../../types/enum";
 import { capitalizeWord } from "../../utils";
 
 export function ThemeSelectorButton({
@@ -25,7 +24,6 @@ export function ThemeSelectorButton({
       }}
       onClick={() => {
         setSiteTheme(themeOption);
-        localStorage?.setItem(SITE_THEME_KEY, themeOption);
         handleClose();
       }}
       label={label}

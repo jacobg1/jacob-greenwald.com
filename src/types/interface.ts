@@ -1,4 +1,4 @@
-import { type Dispatch, type ReactNode, type SetStateAction } from "react";
+import { type ReactNode } from "react";
 
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
@@ -50,7 +50,7 @@ type ProjectContent = {
   app: string;
   repo: string;
   order: number;
-  iconName: string;
+  iconName: ProjectIconName;
 };
 
 export type HtmlString = string;
@@ -111,7 +111,7 @@ export interface ProjectProps {
   repo: string;
   value: number;
   index: number;
-  iconName: string;
+  iconName: ProjectIconName;
 }
 
 export interface ProjectTabsProps {
@@ -133,7 +133,7 @@ export interface ProjectIconProps {
 export interface ThemeSelectorButtonProps {
   themeOption: SiteTheme;
   selectedTheme: SiteTheme;
-  setSiteTheme: Dispatch<SetStateAction<SiteTheme | null>>;
+  setSiteTheme: (selectedTheme: SiteTheme) => void;
   handleClose: () => void;
 }
 
