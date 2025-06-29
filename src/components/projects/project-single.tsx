@@ -8,7 +8,7 @@ import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 
 import { ProjectIcon } from "./project-icon";
-import { ProjectProps, ProjectIconName } from "../../types";
+import { ProjectProps } from "../../types";
 import { ButtonLink } from "../global/button-link";
 import { Content } from "../global/content";
 
@@ -66,7 +66,7 @@ export const Project = ({
     <Box hidden={value !== index} sx={projectStyles} component="article">
       <Box className="project-title">
         <Typography variant="h3">{title}</Typography>
-        <ProjectIcon iconName={iconName as ProjectIconName} />
+        <ProjectIcon iconName={iconName} />
       </Box>
       <Divider className="divider" />
       <Box className="project-container">
