@@ -1,4 +1,4 @@
-import React, { useState, useMemo, ReactElement, useEffect } from "react";
+import React, { useMemo, ReactElement, useSyncExternalStore } from "react";
 
 import { ThemeProvider } from "@emotion/react";
 import { GatsbyBrowser } from "gatsby";
@@ -11,24 +11,45 @@ interface WrapperProps {
   element: ReactElement;
 }
 
-const Wrapper = ({ element }: WrapperProps): JSX.Element | null => {
-  const [siteTheme, setSiteTheme] = useState<SiteTheme | null>(null);
+function themeFromLocalStorage(): SiteTheme {
+  return (
+    (localStorage.getItem(SITE_THEME_KEY) as SiteTheme) || SiteTheme.SILVER
+  );
+}
 
-  useEffect(() => {
-    const selectedTheme = localStorage?.getItem(SITE_THEME_KEY) as SiteTheme;
-    setSiteTheme(selectedTheme || SiteTheme.SILVER);
-  }, []);
+function themeFromServer(): null {
+  return null;
+}
+
+function subscribeToLocalStorage(cb: () => void): () => void {
+  window.addEventListener("storage", cb);
+  return () => {
+    window.removeEventListener("storage", cb);
+  };
+}
+
+function setSiteTheme(selectedTheme: SiteTheme): void {
+  localStorage.setItem(SITE_THEME_KEY, selectedTheme);
+  window.dispatchEvent(new Event("storage"));
+}
+
+const Wrapper = ({ element }: WrapperProps): JSX.Element | null => {
+  const selectedTheme = useSyncExternalStore(
+    subscribeToLocalStorage,
+    themeFromLocalStorage,
+    themeFromServer
+  );
 
   const theme = useMemo(() => {
-    if (siteTheme) return getTheme(siteTheme);
+    if (selectedTheme) return getTheme(selectedTheme);
     return null;
-  }, [siteTheme]);
+  }, [selectedTheme]);
 
   if (!theme) return null;
 
   return (
     <SiteThemeContext.Provider
-      value={{ siteTheme: siteTheme as SiteTheme, setSiteTheme }}
+      value={{ siteTheme: selectedTheme as SiteTheme, setSiteTheme }}
     >
       <ThemeProvider theme={theme}>{element}</ThemeProvider>
     </SiteThemeContext.Provider>
