@@ -37,4 +37,7 @@ mySkills:
   - text: graphql
     type: database
     website: https://graphql.org/
+  - text: mysql
+    type: database
+    website: https://www.mysql.com/
 ---
