@@ -1,6 +1,7 @@
 import React, { useMemo, ReactElement, useSyncExternalStore } from "react";
 
 import { ThemeProvider } from "@emotion/react";
+import Box from "@mui/material/Box";
 import { GatsbyBrowser } from "gatsby";
 
 import { SiteThemeContext } from "../context/site-theme-context";
@@ -45,13 +46,15 @@ const Wrapper = ({ element }: WrapperProps): JSX.Element | null => {
     return null;
   }, [selectedTheme]);
 
-  if (!theme) return null;
-
   return (
     <SiteThemeContext.Provider
       value={{ siteTheme: selectedTheme as SiteTheme, setSiteTheme }}
     >
-      <ThemeProvider theme={theme}>{element}</ThemeProvider>
+      {theme ? (
+        <ThemeProvider theme={theme}>{element}</ThemeProvider>
+      ) : (
+        <Box sx={{ display: "none" }}>{element}</Box>
+      )}
     </SiteThemeContext.Provider>
   );
 };
