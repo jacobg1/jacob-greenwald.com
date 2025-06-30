@@ -1,38 +1,10 @@
-import { useSyncExternalStore } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 
-import { SITE_THEME_KEY } from "../types";
-
-function valueFromLocalStorage(
-  key: string,
-  defaultValue: string
-): () => string {
-  return () => {
-    try {
-      return localStorage.getItem(key) || defaultValue;
-    } catch {
-      return defaultValue;
-    }
-  };
-}
-
-function valueFromServer(defaultServerValue: string): () => string {
-  return () => defaultServerValue;
-}
-
-function subscribeToLocalStorage(cb: () => void): () => void {
+function subscribe(cb: () => void): () => void {
   window?.addEventListener("storage", cb);
   return () => {
     window?.removeEventListener("storage", cb);
   };
-}
-
-function setValue(value: string): void {
-  try {
-    localStorage.setItem(SITE_THEME_KEY, value);
-    window.dispatchEvent(new Event("storage"));
-  } catch {
-    return;
-  }
 }
 
 type UseLocalStorageResponse = [
@@ -45,10 +17,36 @@ export function useLocalStorage(
   defaultValue: string,
   defaultServerValue: string
 ): UseLocalStorageResponse {
-  const value = useSyncExternalStore(
-    subscribeToLocalStorage,
-    valueFromLocalStorage(key, defaultValue),
-    valueFromServer(defaultServerValue)
+  const valueFromLocalStorage = useCallback(() => {
+    try {
+      return localStorage.getItem(key) || defaultValue;
+    } catch {
+      return defaultValue;
+    }
+  }, [key, defaultValue]);
+
+  const valueFromServer = useCallback(
+    () => defaultServerValue,
+    [defaultServerValue]
   );
+
+  const setValue = useCallback(
+    (value: string) => {
+      try {
+        localStorage.setItem(key, value);
+        window.dispatchEvent(new Event("storage"));
+      } catch {
+        return;
+      }
+    },
+    [key]
+  );
+
+  const value = useSyncExternalStore(
+    subscribe,
+    valueFromLocalStorage,
+    valueFromServer
+  );
+
   return [value, setValue];
 }
