@@ -2,7 +2,7 @@ import * as React from "react";
 
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
-import { graphql, type PageProps } from "gatsby";
+import { graphql, type HeadProps, type PageProps } from "gatsby";
 
 import TagCard from "../components/blog/tag-card";
 import { GoBack } from "../components/global/go-back";
@@ -30,26 +30,19 @@ const TagsPage = ({
   },
 }: PageProps<TagsPageProps>): JSX.Element => {
   return (
-    <>
-      <PageMeta
-        metaTitle="All Tags"
-        slug="/tags/"
-        metaDescription="List of all post tags."
-      />
-      <Box sx={tagsPageStyles}>
-        <GoBack page="/blog/" />
-        <TitleWithDivider title="All Tags" />
-        <Box sx={tagsContainerStyles}>
-          {tags.map(({ fieldValue, totalCount }) => (
-            <TagCard
-              key={fieldValue}
-              fieldValue={fieldValue}
-              totalCount={totalCount}
-            />
-          ))}
-        </Box>
+    <Box sx={tagsPageStyles}>
+      <GoBack page="/blog/" />
+      <TitleWithDivider title="All Tags" />
+      <Box sx={tagsContainerStyles}>
+        {tags.map(({ fieldValue, totalCount }) => (
+          <TagCard
+            key={fieldValue}
+            fieldValue={fieldValue}
+            totalCount={totalCount}
+          />
+        ))}
       </Box>
-    </>
+    </Box>
   );
 };
 
@@ -65,3 +58,13 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export const Head = ({ location }: HeadProps<TagsPageProps>): JSX.Element => {
+  return (
+    <PageMeta
+      metaTitle="All Tags"
+      metaDescription="List of all post tags."
+      slug={location.pathname}
+    />
+  );
+};

@@ -3,7 +3,7 @@ import * as React from "react";
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { graphql, type PageProps } from "gatsby";
+import { graphql, type HeadProps, type PageProps } from "gatsby";
 
 import { NextAndPreviousPost } from "../components/blog/next-and-previous-post";
 import { Content } from "../components/global/content";
@@ -27,19 +27,12 @@ const SingleBlog = ({
   data: { post, next, previous },
 }: PageProps<SingleBlogProps>): JSX.Element => {
   return (
-    <>
-      <PageMeta
-        metaTitle={post.frontmatter.title}
-        slug={post.fields.slug}
-        metaDescription={post.frontmatter.description}
-      />
-      <Box className="single-blog" sx={singleBlogStyles}>
-        <GoBack page="/blog/" />
-        <Typography variant="h2">{post.frontmatter.title}</Typography>
-        <Content content={post.html} className="single-blog-content" />
-        <NextAndPreviousPost previousPost={previous} nextPost={next} />
-      </Box>
-    </>
+    <Box className="single-blog" sx={singleBlogStyles}>
+      <GoBack page="/blog/" />
+      <Typography variant="h2">{post.frontmatter.title}</Typography>
+      <Content content={post.html} className="single-blog-content" />
+      <NextAndPreviousPost previousPost={previous} nextPost={next} />
+    </Box>
   );
 };
 
@@ -80,3 +73,16 @@ export const pageQuery = graphql`
 `;
 
 export default SingleBlog;
+
+export const Head = ({
+  location: { pathname },
+  data: {
+    post: {
+      frontmatter: { title, description },
+    },
+  },
+}: HeadProps<SingleBlogProps>): JSX.Element => {
+  return (
+    <PageMeta metaTitle={title} slug={pathname} metaDescription={description} />
+  );
+};
