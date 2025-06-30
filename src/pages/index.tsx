@@ -25,7 +25,6 @@ const ProjectsPage = ({
 }: PageProps<PageContent>): JSX.Element => {
   return (
     <>
-      <PageMeta />
       <Box sx={projectPageStyles}>
         <Typography variant="h2">{title}</Typography>
         <Content content={html} />
@@ -47,3 +46,5 @@ export const pageQuery = graphql`
 `;
 
 export default ProjectsPage;
+
+export const Head = (): JSX.Element => <PageMeta />;

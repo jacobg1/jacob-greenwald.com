@@ -4,7 +4,7 @@ import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
-import { graphql, type PageProps } from "gatsby";
+import { graphql, type HeadProps, type PageProps } from "gatsby";
 // import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Content } from "../components/global/content";
@@ -72,7 +72,6 @@ const AboutPage = ({
 }: PageProps<PageContentWithImage>): JSX.Element => {
   return (
     <Box display="flex">
-      <PageMeta metaTitle="About Me" slug="/about/" />
       <Box sx={aboutPageStyles}>
         <Typography variant="h2">{title}</Typography>
         <Divider className="divider" />
@@ -113,3 +112,14 @@ export const pageQuery = graphql`
 `;
 
 export default AboutPage;
+
+export const Head = ({
+  location,
+  data: {
+    content: {
+      frontmatter: { title },
+    },
+  },
+}: HeadProps<PageContentWithImage>): JSX.Element => {
+  return <PageMeta metaTitle={title} slug={location.pathname} />;
+};
