@@ -1,8 +1,8 @@
 ---
 title: "Stock Viz"
 repo: "https://github.com/jacobg1/stock-viz"
-app: "https://jacobg1.github.io/stock-viz/"
-order: 2
+app: "https://main.d3dvyuvhefdn6n.amplifyapp.com/"
+order: 2 
 iconName: graph
 ---
 
