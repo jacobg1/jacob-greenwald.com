@@ -52,7 +52,7 @@ node -v
 ```
 
 ```
-v20.14.0
+v22.17.0
 ```
 
 ### Option 2 - Download directly
