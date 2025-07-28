@@ -1,4 +1,4 @@
-import { EmojiConfig, SiteTheme } from "../types";
+import { type EmojiConfig, SiteTheme, SliderDirection } from "../types";
 
 export function createTagPageSlug(tagName: string): string {
   return tagName.toLocaleLowerCase().replace(/ /g, "-");
@@ -50,4 +50,20 @@ export function getEmojisToShow(
 
     return acc;
   }, []);
+}
+
+export function handleSliderArrow(
+  dir: SliderDirection,
+  value: number,
+  numProjects: number
+): number {
+  const lastProject = numProjects - 1;
+
+  if (dir === SliderDirection.LEFT) {
+    const isFirst = value === 0;
+    return isFirst ? lastProject : value - 1;
+  } else {
+    const isLast = value === lastProject;
+    return isLast ? 0 : value + 1;
+  }
 }
