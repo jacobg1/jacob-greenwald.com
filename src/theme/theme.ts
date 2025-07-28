@@ -43,6 +43,9 @@ export function getTheme(siteTheme: SiteTheme): CustomTheme {
 
   let theme = createTheme();
   theme = createTheme({
+    palette: {
+      primary: { main: iconColor },
+    },
     typography: {
       fontFamily: ["Overpass", "sans-serif"].join(","),
       body1: {
