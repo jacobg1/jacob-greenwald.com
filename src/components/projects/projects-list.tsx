@@ -1,4 +1,4 @@
-import { default as React, SyntheticEvent } from "react";
+import * as React from "react";
 
 import { graphql, useStaticQuery } from "gatsby";
 
@@ -8,7 +8,10 @@ import { ProjectsListContent } from "../../types";
 
 export const ProjectsList = (): JSX.Element => {
   const {
-    projects: { edges: projectList },
+    projects: {
+      edges: projectList,
+      pageInfo: { itemCount: numProjects },
+    },
   } = useStaticQuery<ProjectsListContent>(projectsQuery);
   const [value, setValue] = React.useState(0);
 
@@ -20,7 +23,7 @@ export const ProjectsList = (): JSX.Element => {
     }) => order
   );
 
-  const handleChange = (_: SyntheticEvent, newValue: number): void => {
+  const handleChange = (newValue: number): void => {
     setValue(newValue);
   };
 
@@ -28,6 +31,7 @@ export const ProjectsList = (): JSX.Element => {
     <>
       <ProjectTabs
         value={value}
+        numProjects={numProjects}
         tabLabels={tabLabels}
         handleChange={handleChange}
       />
@@ -62,6 +66,9 @@ export const projectsQuery = graphql`
             iconName
           }
         }
+      }
+      pageInfo {
+        itemCount
       }
     }
   }
