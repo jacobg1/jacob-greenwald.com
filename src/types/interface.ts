@@ -84,9 +84,14 @@ type Edge = {
   node: Node;
 };
 
+type PageInfo = {
+  itemCount: number;
+};
+
 export interface ProjectsListContent {
   projects: {
     edges: Edge[];
+    pageInfo: PageInfo;
   };
 }
 
@@ -115,9 +120,10 @@ export interface ProjectProps {
 }
 
 export interface ProjectTabsProps {
+  numProjects: number;
   tabLabels: number[] | string[];
   value: number;
-  handleChange: (_: React.SyntheticEvent, newValue: number) => void;
+  handleChange: (newValue: number) => void;
 }
 
 export interface ButtonLinkProps {

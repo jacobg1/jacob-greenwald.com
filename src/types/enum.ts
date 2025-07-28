@@ -13,4 +13,9 @@ export enum ProjectIconName {
   GRAPH = "graph",
 }
 
+export enum SliderDirection {
+  LEFT = "LEFT",
+  RIGHT = "RIGHT",
+}
+
 export const SITE_THEME_KEY = "jacob-site-theme";
