@@ -2,24 +2,18 @@ import ArrowLeft from "@mui/icons-material/ArrowLeft";
 import ArrowRight from "@mui/icons-material/ArrowRight";
 import { createTheme } from "@mui/material/styles";
 
-import { CustomTheme } from "./theme-type";
 import {
   bronzeTheme,
-  bronzeThemeColor,
   goldTheme,
-  goldThemeColor,
   silverTheme as defaultTheme,
-  silverThemeColor,
   classicTheme,
-  classicThemeColor,
   neonTheme,
-  neonThemeColor,
   cakeTheme,
-  cakeThemeColor,
 } from "./themes";
-import { SiteTheme } from "../types/enum";
+import { SiteTheme, type CustomTheme, type ThemeMap } from "../types";
+import { getThemeBackgroundColor } from "../utils";
 
-const themeMap = {
+const themeMap: ThemeMap = {
   [SiteTheme.SILVER]: defaultTheme,
   [SiteTheme.GOLD]: goldTheme,
   [SiteTheme.BRONZE]: bronzeTheme,
@@ -27,6 +21,8 @@ const themeMap = {
   [SiteTheme.NEON]: neonTheme,
   [SiteTheme.CAKE]: cakeTheme,
 };
+
+const themeBackgroundColors = getThemeBackgroundColor(themeMap);
 
 export function getTheme(siteTheme: SiteTheme): CustomTheme {
   const {
@@ -239,26 +235,7 @@ export function getTheme(siteTheme: SiteTheme): CustomTheme {
       },
       MuiPopover: {
         styleOverrides: {
-          root: {
-            "& .silver-theme": {
-              backgroundColor: silverThemeColor,
-            },
-            "& .gold-theme": {
-              backgroundColor: goldThemeColor,
-            },
-            "& .bronze-theme": {
-              backgroundColor: bronzeThemeColor,
-            },
-            "& .classic-theme": {
-              backgroundColor: classicThemeColor,
-            },
-            "& .neon-theme": {
-              backgroundColor: neonThemeColor,
-            },
-            "& .cake-theme": {
-              backgroundColor: cakeThemeColor,
-            },
-          },
+          root: themeBackgroundColors,
         },
       },
       MuiChip: {
@@ -308,5 +285,5 @@ export function getTheme(siteTheme: SiteTheme): CustomTheme {
     },
   });
 
-  return theme as CustomTheme;
+  return theme;
 }
