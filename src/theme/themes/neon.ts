@@ -12,6 +12,7 @@ const buttonColor = "#000000";
 const textColor = "#000000";
 
 export const neonTheme: ThemeConfig = {
+  themeColor: secondaryBackground,
   text: {
     color: textColor,
   },
@@ -50,5 +51,3 @@ export const neonTheme: ThemeConfig = {
     },
   },
 };
-
-export const neonThemeColor = secondaryBackground;

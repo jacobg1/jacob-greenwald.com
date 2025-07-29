@@ -13,6 +13,7 @@ const borderSecondary = `2px dashed ${mainColor}`;
 const borderTertiary = `2px solid ${textColor}`;
 
 export const cakeTheme: ThemeConfig = {
+  themeColor: secondaryBackground,
   text: {
     color: textColor,
   },
@@ -51,5 +52,3 @@ export const cakeTheme: ThemeConfig = {
     },
   },
 };
-
-export const cakeThemeColor = secondaryBackground;

@@ -4,6 +4,8 @@ import {
   Theme as MuiTheme,
 } from "@mui/material/styles";
 
+import { SiteTheme } from "../types";
+
 export type CustomTheme = Omit<MuiTheme, "components">;
 
 declare module "@mui/material/styles" {
@@ -40,6 +42,7 @@ declare module "@mui/material/styles" {
 }
 
 export interface ThemeConfig {
+  themeColor: string;
   text: {
     color: string;
   };
@@ -78,3 +81,11 @@ export interface ThemeConfig {
     };
   };
 }
+
+export type ThemeMap = {
+  [key in SiteTheme]: ThemeConfig;
+};
+
+export type ThemeBackgroundColor = {
+  [key: string]: { [key: string]: string };
+};

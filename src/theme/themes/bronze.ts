@@ -12,6 +12,7 @@ const buttonColor = "#000000";
 const textColor = "#000000";
 
 export const bronzeTheme: ThemeConfig = {
+  themeColor: mainBackground,
   text: {
     color: textColor,
   },
@@ -50,5 +51,3 @@ export const bronzeTheme: ThemeConfig = {
     },
   },
 };
-
-export const bronzeThemeColor = mainBackground;

@@ -12,6 +12,7 @@ const buttonColor = "#000000";
 const textColor = "#000000";
 
 export const goldTheme: ThemeConfig = {
+  themeColor: mainBackground,
   text: {
     color: textColor,
   },
@@ -50,5 +51,3 @@ export const goldTheme: ThemeConfig = {
     },
   },
 };
-
-export const goldThemeColor = mainBackground;
