@@ -1,14 +1,12 @@
 import * as React from "react";
 
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 
+import { ProjectSliderArrow } from "./project-slider-arrow";
 import { type ProjectTabsProps, SliderDirection } from "../../types";
-import { handleSliderArrow } from "../../utils";
 
 const tabsContainerStyles: SxProps = {
   display: "flex",
@@ -16,7 +14,7 @@ const tabsContainerStyles: SxProps = {
   justifyContent: "space-around",
   alignItems: "center",
   fontWeight: 400,
-  maxWidth: { xs: "400px", sm: "500px" }, // todo - adjust this?
+  maxWidth: { xs: "400px", sm: "500px", md: "600px" },
   margin: { xs: "25px auto 30px", sm: "55px auto 55px" },
   "& .MuiTabs-root": {
     minWidth: "70%",
@@ -45,12 +43,6 @@ const projectTabStyles: SxProps = {
   },
 };
 
-const tabIconStyles: SxProps = {
-  cursor: "pointer",
-  color: "primary.main",
-  fontSize: { xs: "2.1rem", sm: "2.7rem", md: "3rem" },
-};
-
 export const ProjectTabs = ({
   value,
   numProjects,
@@ -59,13 +51,11 @@ export const ProjectTabs = ({
 }: ProjectTabsProps): JSX.Element => {
   return (
     <Box sx={tabsContainerStyles}>
-      <ChevronLeftIcon
-        sx={tabIconStyles}
-        onClick={() => {
-          handleChange(
-            handleSliderArrow(SliderDirection.LEFT, value, numProjects)
-          );
-        }}
+      <ProjectSliderArrow
+        handleChange={handleChange}
+        value={value}
+        numProjects={numProjects}
+        dir={SliderDirection.LEFT}
       />
       <Tabs
         value={value}
@@ -84,13 +74,11 @@ export const ProjectTabs = ({
           />
         ))}
       </Tabs>
-      <ChevronRightIcon
-        sx={tabIconStyles}
-        onClick={() => {
-          handleChange(
-            handleSliderArrow(SliderDirection.RIGHT, value, numProjects)
-          );
-        }}
+      <ProjectSliderArrow
+        handleChange={handleChange}
+        value={value}
+        numProjects={numProjects}
+        dir={SliderDirection.RIGHT}
       />
     </Box>
   );
