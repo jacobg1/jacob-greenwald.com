@@ -1,4 +1,4 @@
-import type { ThemeMap, ThemeBackgroundColor } from "../theme";
+import type { ThemeMap, ThemeBackgroundColor } from "../types";
 
 export function getThemeBackgroundColor(
   themeMap: ThemeMap

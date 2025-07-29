@@ -1,4 +1,4 @@
-import { ThemeConfig } from "../theme-type";
+import type { ThemeConfig } from "../../types";
 
 const mainColor = "#014b95";
 const secondaryBackground = "#e7e7e7";
