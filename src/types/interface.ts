@@ -2,7 +2,7 @@ import { type ReactNode } from "react";
 
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
-import { ProjectIconName, SiteTheme } from "./enum";
+import { ProjectIconName, SiteTheme, SliderDirection } from "./enum";
 
 export interface NavLinkItem {
   text: string;
@@ -155,4 +155,11 @@ export interface CopyToClipboardProps {
 
 export interface SiteEmailProps {
   isMobileHeader?: boolean;
+}
+
+export interface ProjectSliderArrowProps {
+  value: number;
+  numProjects: number;
+  dir: SliderDirection;
+  handleChange: (newValue: number) => void;
 }
