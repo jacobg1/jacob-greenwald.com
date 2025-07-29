@@ -4,7 +4,7 @@ import {
   Theme as MuiTheme,
 } from "@mui/material/styles";
 
-import { SiteTheme } from "../types";
+import { SiteTheme } from "./enum";
 
 export type CustomTheme = Omit<MuiTheme, "components">;
 
