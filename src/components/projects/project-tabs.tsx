@@ -10,17 +10,23 @@ import { type ProjectTabsProps, SliderDirection } from "../../types";
 
 const tabsContainerStyles: SxProps = {
   display: "flex",
+  flexWrap: "wrap",
   flexDirection: "row",
   justifyContent: "space-around",
   alignItems: "center",
+  alignContent: "center",
   fontWeight: 400,
   maxWidth: { xs: "400px", sm: "500px", md: "600px" },
   margin: { xs: "25px auto 30px", sm: "55px auto 55px" },
   "& .MuiTabs-root": {
     minWidth: "70%",
+    alignItems: "center",
   },
   "& .MuiTabs-scroller": {
     alignContent: "center",
+  },
+  "& .MuiSvgIcon-root": {
+    alignSelf: "center",
   },
 };
 
