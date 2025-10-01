@@ -65,6 +65,7 @@
   },
   "overrides": {
     "cookie": "0.7.1",
-    "path-to-regexp": "0.1.12"
+    "path-to-regexp": "0.1.12",
+    "tmp": "0.2.5"
   }
 }
