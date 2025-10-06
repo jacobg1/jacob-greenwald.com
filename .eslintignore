@@ -1,2 +1,7 @@
 .eslintrc.js
 gatsby-node.ts
+jest.config.js
+jest-preprocess.js
+loadershim.js
+setup-test-env.js
+__mocks__
