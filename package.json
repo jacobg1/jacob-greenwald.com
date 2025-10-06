@@ -14,7 +14,7 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-		"test:watch": "npm run test -- --watchAll"
+    "test:watch": "npm run test -- --watchAll"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -71,6 +71,7 @@
     "jest": "^30.2.0",
     "jest-environment-jsdom": "^30.2.0",
     "prettier": "^3.3.2",
+    "ts-node": "^10.9.2",
     "typescript": "5.8.3",
     "webpack-dev-middleware": "^5.3.4"
   },
