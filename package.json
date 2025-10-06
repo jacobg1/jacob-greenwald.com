@@ -14,7 +14,7 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-		"test:watch": "npm run test -- --watch"
+		"test:watch": "npm run test -- --watchAll"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
