@@ -103,11 +103,15 @@
   },
   "include": [
     "./src/**/*",
+		"./__mocks__/**/*",
     "./gatsby-node.ts",
     "./gatsby-config.ts",
     "gatsby-browser.ts",
     "gatsby-ssr.ts",
+		"jest.config.ts",
 		"jest.setup.ts",
+		"loadershim.ts",
+		"jest-preprocess.ts",
     "./theme.ts",
     "./plugins/**/*"
   ]
