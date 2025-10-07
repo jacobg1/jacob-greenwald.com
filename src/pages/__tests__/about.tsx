@@ -14,8 +14,8 @@ import AboutPage, { Head } from "../about";
 
 const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
 
-const title = "Test title";
-const testContent = "test html";
+const title = "About page title";
+const testContent = "about page html";
 
 const data = {
   content: {
@@ -55,6 +55,9 @@ describe("about", () => {
     });
 
     const metaTitle = container.querySelector("title");
-    expect(metaTitle?.textContent).toBe(mockMetadata.title);
+    expect(metaTitle?.textContent).toBe(title);
+
+    const canonical = container.querySelector('[rel="canonical"]');
+    expect(canonical).toHaveAttribute("href", `${mockMetadata.siteUrl}/about`);
   });
 });
