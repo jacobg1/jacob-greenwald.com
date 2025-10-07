@@ -71,7 +71,7 @@ interface GatsbyImageSharp {
 }
 
 export interface PageContentWithImage extends PageContent {
-  featuredImage: GatsbyImageSharp;
+  featuredImage?: GatsbyImageSharp;
 }
 
 interface Node {
