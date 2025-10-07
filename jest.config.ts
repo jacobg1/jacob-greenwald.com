@@ -22,6 +22,35 @@ const config: Config = {
   setupFiles: ["<rootDir>/loadershim.ts", "<rootDir>/__mocks__/gatsby-mock.ts"],
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  clearMocks: true,
+  displayName: {
+    name: ":)",
+    color: "green",
+  },
+  collectCoverage: true,
+  collectCoverageFrom: [
+    "**/*.{ts,tsx}",
+    "!**/node_modules/**",
+    "!**/themes/**",
+    "!**/types/**",
+    "!**/context/**",
+    "!**/.cache/**",
+    "!**/*.d.ts",
+    "!**/jest*",
+    "!**/gatsby*",
+    "!**/*index.{ts,tsx}",
+    "**/pages/index.tsx",
+  ],
+  coverageThreshold: {
+    // Starting these a bit lower
+    // Will bump these up as more coverage is added
+    global: {
+      branches: 30,
+      functions: 30,
+      lines: 30,
+      statements: 30,
+    },
+  },
 };
 
 export default config;
