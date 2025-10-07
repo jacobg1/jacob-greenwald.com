@@ -20,7 +20,7 @@ const testContent = "test html";
 
 const data = {
   content: {
-    html: `<p>${testContent}<p>`,
+    html: `<p>${testContent}</p>`,
     frontmatter: { title },
   },
 };
