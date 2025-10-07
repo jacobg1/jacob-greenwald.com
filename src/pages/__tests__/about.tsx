@@ -28,8 +28,6 @@ const mockPageProps = getMockPageProps<PageContentWithImage>(data);
 const mockHeadProps = getMockHeadProps("/about");
 
 describe("about", () => {
-  beforeEach(() => {});
-
   afterEach(() => {
     jest.restoreAllMocks();
   });
