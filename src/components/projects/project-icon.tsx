@@ -8,16 +8,20 @@ import { ReactComponent as VinylIcon } from "../../images/vinyl.svg";
 import { ProjectIconName, ProjectIconProps } from "../../types";
 
 const iconMap = {
-  [ProjectIconName.VINYL]: <VinylIcon />,
-  [ProjectIconName.SPACE]: <SpaceIcon />,
-  [ProjectIconName.GRAPH]: <GraphIcon />,
+  [ProjectIconName.VINYL]: VinylIcon,
+  [ProjectIconName.SPACE]: SpaceIcon,
+  [ProjectIconName.GRAPH]: GraphIcon,
 };
 
 export const ProjectIcon = ({
   iconName,
 }: ProjectIconProps): JSX.Element | null => {
-  const icon = iconMap[iconName];
+  const Icon = iconMap[iconName];
+  if (!Icon) return null;
 
-  if (!icon) return null;
-  return <Box className="project-icon">{icon}</Box>;
+  return (
+    <Box className="project-icon">
+      <Icon />
+    </Box>
+  );
 };
