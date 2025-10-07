@@ -38,6 +38,7 @@ const config: Config = {
     "!**/*.d.ts",
     "!**/jest*",
     "!**/gatsby*",
+    "!**/__utils__/**",
     "!**/*index.{ts,tsx}",
     "**/pages/index.tsx",
   ],

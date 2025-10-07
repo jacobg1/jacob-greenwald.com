@@ -1,9 +1,7 @@
 import * as React from "react";
 
 import type { WindowLocation } from "@reach/router";
-import type { PageProps } from "gatsby";
-
-import { type Skill, SkillsEnum } from "../src/types";
+import type { HeadProps, PageProps } from "gatsby";
 
 const mockParams = {
   test: "true",
@@ -37,8 +35,18 @@ export function getMockPageProps<T, C = null, S = null>(
   };
 }
 
-// TODO - better location for this?
-export const mockSkills: Skill[] = [
-  { text: "test skill", type: SkillsEnum.BACKEND, website: "test-site" },
-  { text: "test skill2", type: SkillsEnum.FRONTEND, website: "test2-site" },
-];
+export function getMockHeadProps<C = null, S = null>(
+  pathname: string,
+  context?: C | null,
+  server?: S | null
+): Omit<HeadProps, "data"> {
+  const pageContext = context || mockParams;
+  const serverData = server || mockParams;
+
+  return {
+    location: { pathname },
+    params: mockParams,
+    pageContext,
+    serverData,
+  };
+}
