@@ -19,7 +19,6 @@ export const PageMeta = ({
 
   const seoTitle = metaTitle || title;
   const seoDescription = metaDescription || description;
-  const lang = "en";
 
   const metaLinks = [
     {
@@ -69,7 +68,6 @@ export const PageMeta = ({
 
   return (
     <>
-      <html lang={lang} />
       <title>{seoTitle}</title>
       {metaLinks.map(({ rel, href }) => (
         <link key={rel} id={rel} rel={rel} href={href} />
