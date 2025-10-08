@@ -1,6 +1,7 @@
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 
-import { IGatsbyImageData } from "gatsby-plugin-image";
+import type { Matcher, SelectorMatcherOptions } from "@testing-library/react";
+import type { IGatsbyImageData } from "gatsby-plugin-image";
 
 import { ProjectIconName, SiteTheme, SliderDirection } from "./enum";
 
@@ -80,7 +81,8 @@ interface Node {
   frontmatter: ProjectContent;
 }
 
-type Edge = {
+// rename to project or project node?
+export type Edge = {
   node: Node;
 };
 
@@ -130,6 +132,7 @@ export interface ButtonLinkProps {
   text: string;
   linkHref: string;
   icon: JSX.Element | JSX.Element[];
+  testId: string;
 }
 
 export interface ProjectIconProps {
@@ -163,3 +166,8 @@ export interface ProjectSliderArrowProps {
   dir: SliderDirection;
   handleChange: (newValue: number) => void;
 }
+
+export type TextMatcher = (
+  id: Matcher,
+  options?: SelectorMatcherOptions
+) => HTMLElement;
