@@ -49,6 +49,7 @@ const TagCard = ({ fieldValue, totalCount }: TagCardProps): JSX.Element => {
         <InternalLink
           to={createTagPageLink(fieldValue)}
           className="blog-post-link"
+          data-testid={`${fieldValue}-tag-link`}
         >
           View Posts
         </InternalLink>
