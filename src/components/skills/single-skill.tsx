@@ -25,5 +25,12 @@ export const SingleSkill = ({ text, type, website }: Skill): JSX.Element => {
         </Box>
       );
     });
-  return <ButtonLink text={text} linkHref={website} icon={getSkillIcons} />;
+  return (
+    <ButtonLink
+      text={text}
+      testId={`${text}-skill-button`}
+      linkHref={website}
+      icon={getSkillIcons}
+    />
+  );
 };

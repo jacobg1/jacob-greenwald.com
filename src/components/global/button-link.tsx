@@ -43,6 +43,7 @@ export const ButtonLink = ({
   text,
   linkHref,
   icon,
+  testId,
 }: ButtonLinkProps): JSX.Element => {
   return (
     <Box sx={buttonLinkStyles} className="button-link-container">
@@ -53,6 +54,7 @@ export const ButtonLink = ({
         variant="outlined"
         startIcon={icon}
         rel="noopener noreferrer"
+        data-testid={testId}
       >
         <Box className="button-text" component="span">
           {text}

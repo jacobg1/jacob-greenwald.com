@@ -71,8 +71,18 @@ export const Project = ({
       <Divider className="divider" />
       <Box className="project-container">
         <Box className="project-links">
-          <ButtonLink text="App" linkHref={app} icon={<TerminalIcon />} />
-          <ButtonLink text="Repo" linkHref={repo} icon={<GitHubIcon />} />
+          <ButtonLink
+            text="App"
+            testId={`${title}-app-button`}
+            linkHref={app}
+            icon={<TerminalIcon />}
+          />
+          <ButtonLink
+            text="Repo"
+            testId={`${title}-repo-button`}
+            linkHref={repo}
+            icon={<GitHubIcon />}
+          />
         </Box>
         <Content content={html} />
       </Box>

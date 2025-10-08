@@ -17,11 +17,10 @@ export const ProjectIcon = ({
   iconName,
 }: ProjectIconProps): JSX.Element | null => {
   const Icon = iconMap[iconName];
-  if (!Icon) return null;
 
   return (
-    <Box className="project-icon">
-      <Icon />
+    <Box className="project-icon" data-testid={`${iconName}-icon`}>
+      {Icon ? <Icon /> : null}
     </Box>
   );
 };
