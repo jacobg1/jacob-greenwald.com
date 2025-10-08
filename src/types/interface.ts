@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 
-import type { Matcher, SelectorMatcherOptions } from "@testing-library/react";
 import type { IGatsbyImageData } from "gatsby-plugin-image";
 
 import { ProjectIconName, SiteTheme, SliderDirection } from "./enum";
@@ -165,8 +164,3 @@ export interface ProjectSliderArrowProps {
   dir: SliderDirection;
   handleChange: (newValue: number) => void;
 }
-
-export type TextMatcher = (
-  id: Matcher,
-  options?: SelectorMatcherOptions
-) => HTMLElement;
