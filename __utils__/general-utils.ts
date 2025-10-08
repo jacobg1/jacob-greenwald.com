@@ -1,4 +1,5 @@
-import type { HtmlString, ProjectNode, TextMatcher } from "../src/types";
+import type { TextMatcher, MockMetadata } from "./types";
+import type { HtmlString, ProjectNode } from "../src/types";
 
 function parseHtmlString(htmlString: HtmlString): string {
   const parser = new DOMParser();
@@ -41,4 +42,15 @@ export function testProject(
   expect(getByTestId(`${iconName}-icon`)).toBeVisible();
   expect(getByTestId(`${title}-app-button`)).toHaveAttribute("href", app);
   expect(getByTestId(`${title}-repo-button`)).toHaveAttribute("href", repo);
+}
+
+export function testMetadata(
+  container: HTMLHeadElement,
+  { title, canonicalHref }: MockMetadata
+): void {
+  const metaTitle = container.querySelector("title");
+  expect(metaTitle?.textContent).toBe(title);
+
+  const canonical = container.querySelector('[rel="canonical"]');
+  expect(canonical).toHaveAttribute("href", canonicalHref);
 }

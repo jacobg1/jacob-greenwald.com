@@ -11,6 +11,7 @@ import {
   projectTwo,
   updateProjectOrder,
   testProject,
+  testMetadata,
 } from "../../../__utils__";
 import type { PageContent } from "../../types";
 import ProjectsPage, { Head } from "../index";
@@ -89,10 +90,9 @@ describe("projects page", () => {
       container: document.head,
     });
 
-    const metaTitle = container.querySelector("title");
-    expect(metaTitle?.textContent).toBe(mockMetadata.title);
-
-    const canonical = container.querySelector('[rel="canonical"]');
-    expect(canonical).toHaveAttribute("href", mockMetadata.siteUrl);
+    testMetadata(container, {
+      title: mockMetadata.title,
+      canonicalHref: mockMetadata.siteUrl,
+    });
   });
 });
