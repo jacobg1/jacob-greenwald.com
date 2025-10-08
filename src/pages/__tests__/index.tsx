@@ -8,10 +8,10 @@ import {
   mockMetadata,
   mockProjects,
   projectOne,
-  projectOneContent,
   projectTwo,
+  parseHtmlString,
 } from "../../../__utils__";
-import type { PageContent } from "../../types";
+import type { Edge, PageContent, TextMatcher } from "../../types";
 import ProjectsPage, { Head } from "../index";
 
 const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
@@ -28,6 +28,23 @@ const data = {
 
 const mockPageProps = getMockPageProps<PageContent>(data);
 
+function testProject(
+  getByText: TextMatcher,
+  getByTestId: TextMatcher,
+  {
+    node: {
+      html,
+      frontmatter: { title, iconName, app, repo },
+    },
+  }: Edge
+): void {
+  expect(getByText(title)).toBeVisible();
+  expect(getByText(parseHtmlString(html))).toBeVisible();
+  expect(getByTestId(`${iconName}-icon`));
+  expect(getByTestId(`${title}-app-button`)).toHaveAttribute("href", app);
+  expect(getByTestId(`${title}-repo-button`)).toHaveAttribute("href", repo);
+}
+
 describe("projects page", () => {
   afterEach(() => {
     jest.restoreAllMocks();
@@ -36,20 +53,18 @@ describe("projects page", () => {
   it("renders content and title properly", () => {
     useStaticQuery.mockImplementation(() => mockProjects);
 
-    const { getByText } = render(
+    const { getByText, getByRole, getByTestId } = render(
       <ProjectsPage data={data} {...mockPageProps} />
     );
 
     expect(getByText(title)).toBeVisible();
     expect(getByText(testContent)).toBeVisible();
-    expect(getByText(projectOneContent)).toBeVisible();
 
-    // TODO - test rest of project properties?
-    expect(getByText(projectOne.node.frontmatter.title)).toBeVisible();
+    testProject(getByText, getByTestId, projectOne);
 
-    // TODO - add data test ids?
-    fireEvent.click(getByText("# 2"));
-    expect(getByText(projectTwo.node.frontmatter.title)).toBeVisible();
+    // Click on second project and verify visibility
+    fireEvent.click(getByRole("tab", { name: "# 2" }));
+    testProject(getByText, getByTestId, projectTwo);
   });
 
   it("renders metadata properly", () => {
