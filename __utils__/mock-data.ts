@@ -19,11 +19,9 @@ export const mockMetadata: SiteMetadata = {
   siteUrl: "site.cool",
 };
 
-export const projectOneContent = "project one content";
-
 export const projectOne = {
   node: {
-    html: `<p>${projectOneContent}</p>`,
+    html: `<p>project one content</p>`,
     id: "project-one-id",
     frontmatter: {
       title: "Project One",
@@ -35,11 +33,9 @@ export const projectOne = {
   },
 };
 
-export const projectTwoContent = "project two content";
-
 export const projectTwo = {
   node: {
-    html: `<p>${projectTwoContent}</p>`,
+    html: `<p>project two content</p>`,
     id: "project-two-id",
     frontmatter: {
       title: "Project Two",
