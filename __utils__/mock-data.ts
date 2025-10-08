@@ -1,9 +1,10 @@
 import {
   ProjectIconName,
+  SkillsEnum,
   type ProjectsListContent,
   type SiteMetadata,
   type Skill,
-  SkillsEnum,
+  type TagsPageProps,
 } from "../src/types";
 
 export const mockSkills: Skill[] = [
@@ -51,5 +52,26 @@ export const mockProjects: ProjectsListContent = {
   projects: {
     edges: [projectOne, projectTwo],
     pageInfo: { itemCount: 2 },
+  },
+};
+
+const tags = [
+  {
+    fieldValue: "Test tag one",
+    totalCount: 5,
+  },
+  {
+    fieldValue: "Test tag two",
+    totalCount: 1,
+  },
+  {
+    fieldValue: "Test tag three",
+    totalCount: 2,
+  },
+];
+
+export const mockTags: TagsPageProps = {
+  tagsData: {
+    group: tags,
   },
 };
