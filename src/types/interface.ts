@@ -81,8 +81,7 @@ interface Node {
   frontmatter: ProjectContent;
 }
 
-// rename to project or project node?
-export type Edge = {
+export type ProjectNode = {
   node: Node;
 };
 
@@ -92,7 +91,7 @@ type PageInfo = {
 
 export interface ProjectsListContent {
   projects: {
-    edges: Edge[];
+    edges: ProjectNode[];
     pageInfo: PageInfo;
   };
 }

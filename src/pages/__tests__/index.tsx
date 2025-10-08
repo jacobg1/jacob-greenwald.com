@@ -11,7 +11,7 @@ import {
   projectTwo,
   parseHtmlString,
 } from "../../../__utils__";
-import type { Edge, PageContent, TextMatcher } from "../../types";
+import type { ProjectNode, PageContent, TextMatcher } from "../../types";
 import ProjectsPage, { Head } from "../index";
 
 const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
@@ -36,7 +36,7 @@ function testProject(
       html,
       frontmatter: { title, iconName, app, repo },
     },
-  }: Edge
+  }: ProjectNode
 ): void {
   expect(getByText(title)).toBeVisible();
   expect(getByText(parseHtmlString(html))).toBeVisible();
