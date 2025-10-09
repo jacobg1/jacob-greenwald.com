@@ -38,16 +38,15 @@ export const TagsList = ({ tags }: TagsListProps): JSX.Element | null => {
   return (
     <Stack sx={tagsListStyles} direction="row">
       {tags.map((tag) => (
-        <Chip
-          sx={chipStyles}
-          key={tag}
-          icon={<AdsClickIcon />}
-          label={tag.trim()}
-          component={InternalLink}
-          to={createTagPageLink(tag)}
-          variant="outlined"
-          clickable
-        />
+        <InternalLink key={tag} to={createTagPageLink(tag)}>
+          <Chip
+            sx={chipStyles}
+            icon={<AdsClickIcon />}
+            label={tag.trim()}
+            variant="outlined"
+            clickable
+          />
+        </InternalLink>
       ))}
     </Stack>
   );
