@@ -53,4 +53,6 @@ export function testMetadata(
 
   const canonical = container.querySelector('[rel="canonical"]');
   expect(canonical).toHaveAttribute("href", canonicalHref);
+
+  // TODO - test more meta tags?
 }
