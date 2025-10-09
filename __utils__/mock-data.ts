@@ -75,3 +75,37 @@ export const mockTags: TagsPageProps = {
     group: tags,
   },
 };
+
+const postOne = {
+  id: "post-one-id",
+  fields: {
+    slug: "/blog/post-one/",
+  },
+  frontmatter: {
+    date: "October 14, 2024",
+    title: "Post One",
+    description: "This is post one",
+    tags: ["JavaScript", "Basics", "Setup"],
+    skillLevel: "+++",
+  },
+};
+
+const postTwo = {
+  id: "post-two-id",
+  fields: {
+    slug: "/blog/post-two/",
+  },
+  frontmatter: {
+    date: "October 19, 2024",
+    title: "Post Two",
+    description: "This is post two",
+    tags: ["JavaScript", "Advanced"],
+    skillLevel: "++",
+  },
+};
+
+export const mockBlogList = {
+  postsData: {
+    nodes: [postOne, postTwo],
+  },
+};

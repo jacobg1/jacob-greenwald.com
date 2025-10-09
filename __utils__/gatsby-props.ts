@@ -1,17 +1,19 @@
 import * as React from "react";
 
 import type { WindowLocation } from "@reach/router";
-import type { HeadProps, PageProps } from "gatsby";
+import type { HeadProps } from "gatsby";
+
+import type { MockParams, GetMockPageProps } from "./types";
 
 const mockParams = {
   test: "true",
 };
 
-export function getMockPageProps<T, C = null, S = null>(
+export function getMockPageProps<T, C = MockParams, S = MockParams>(
   data: T,
-  context?: C | null,
-  server?: S | null
-): Omit<PageProps<T>, "data"> {
+  context?: C,
+  server?: S
+): GetMockPageProps<T, C, S> {
   const pageContext = context || mockParams;
   const serverData = server || mockParams;
 
@@ -32,7 +34,7 @@ export function getMockPageProps<T, C = null, S = null>(
     },
     pageContext,
     serverData,
-  };
+  } as GetMockPageProps<T, C, S>;
 }
 
 export function getMockHeadProps<C = null, S = null>(
