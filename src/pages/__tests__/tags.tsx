@@ -22,6 +22,10 @@ const mockHeadProps = getMockHeadProps("/tags");
 const title = "All Tags";
 
 describe("tags page", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   it("renders title and tags properly", () => {
     useStaticQuery.mockImplementation(() => mockTags);
 
