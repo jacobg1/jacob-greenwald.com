@@ -1,3 +1,4 @@
+import { createSinglePost } from "./general-utils";
 import {
   ProjectIconName,
   SkillsEnum,
@@ -108,4 +109,9 @@ export const mockBlogList = {
   postsData: {
     nodes: [postOne, postTwo],
   },
+};
+
+export const mockSingleBlogPosts = {
+  singleBlogOne: createSinglePost(1, { nextBlog: true, prevBlog: false }),
+  singleBlogTwo: createSinglePost(2, { nextBlog: true, prevBlog: true }),
 };
