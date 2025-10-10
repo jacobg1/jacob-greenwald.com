@@ -8,6 +8,7 @@ const config: Config = {
     ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
     ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
       "<rootDir>/__mocks__/file-mock.ts",
+    "^@reach/router(.*)": `<rootDir>/node_modules/@gatsbyjs/reach-router$1`,
   },
   testPathIgnorePatterns: ["node_modules", "\\.cache", "<rootDir>.*/public"],
   transformIgnorePatterns: [
@@ -19,7 +20,11 @@ const config: Config = {
   testEnvironmentOptions: {
     url: "http://localhost",
   },
-  setupFiles: ["<rootDir>/loadershim.ts", "<rootDir>/__mocks__/gatsby-mock.ts"],
+  setupFiles: [
+    "<rootDir>/loadershim.ts",
+    "<rootDir>/__mocks__/gatsby-mock.ts",
+    "<rootDir>/__mocks__/use-navlinks-query-mock.ts",
+  ],
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   clearMocks: true,
@@ -46,10 +51,10 @@ const config: Config = {
     // Starting these a bit lower
     // Will bump these up as more coverage is added
     global: {
-      branches: 30,
-      functions: 30,
-      lines: 30,
-      statements: 30,
+      branches: 50,
+      functions: 50,
+      lines: 50,
+      statements: 50,
     },
   },
 };
