@@ -1,5 +1,5 @@
 import type { Matcher, SelectorMatcherOptions } from "@testing-library/react";
-import type { PageProps } from "gatsby";
+import type { HeadProps, PageProps } from "gatsby";
 
 import type { SingleBlogProps } from "../src/types";
 
@@ -19,6 +19,8 @@ export type GetMockPageProps<T, C, S> = Omit<
   PageProps<T, C, unknown, S>,
   "data"
 >;
+
+export type GetMockHeadProps<T, C, S> = Omit<HeadProps<T, C, S>, "data">;
 
 export type PostNumWord = {
   [x: string]: {

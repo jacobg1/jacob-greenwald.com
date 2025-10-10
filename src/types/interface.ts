@@ -164,3 +164,7 @@ export interface ProjectSliderArrowProps {
   dir: SliderDirection;
   handleChange: (newValue: number) => void;
 }
+
+export interface SingleTagContext {
+  tag: string;
+}

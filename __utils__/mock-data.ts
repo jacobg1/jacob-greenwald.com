@@ -105,6 +105,20 @@ const postTwo = {
   },
 };
 
+export const mockTagPagePosts = {
+  allMarkdownRemark: {
+    totalCount: 2,
+    edges: [
+      {
+        node: postOne,
+      },
+      {
+        node: postTwo,
+      },
+    ],
+  },
+};
+
 export const mockBlogList = {
   postsData: {
     nodes: [postOne, postTwo],
