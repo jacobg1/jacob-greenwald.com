@@ -4,8 +4,14 @@ import type {
   NextOrPrev,
   PostNumWord,
   NextOrPrevBlogCreate,
+  QueryMatcher,
 } from "./types";
-import type { HtmlString, ProjectNode, SingleBlogProps } from "../src/types";
+import type {
+  BlogListNode,
+  HtmlString,
+  ProjectNode,
+  SingleBlogProps,
+} from "../src/types";
 
 export function parseHtmlString(htmlString: HtmlString): string {
   const parser = new DOMParser();
@@ -61,6 +67,34 @@ export function testMetadata(
   expect(canonical).toHaveAttribute("href", canonicalHref);
 
   // TODO - test more meta tags?
+}
+
+export function testBlogListItem(
+  getByText: TextMatcher,
+  queryAllByTestId: QueryMatcher,
+  {
+    fields: { slug },
+    frontmatter: { title, date, description, tags },
+  }: BlogListNode
+): void {
+  expect(getByText(title)).toHaveAttribute("href", slug);
+  expect(getByText(date)).toBeVisible();
+  expect(getByText(description)).toBeVisible();
+
+  tags.forEach((tag) => {
+    const testId = `tag-name-${tag}`;
+    const tagHref = `/tags/${tag.toLocaleLowerCase()}/`;
+    const tagLinks = queryAllByTestId(testId);
+
+    if (!tagLinks?.length) {
+      throw new Error("Failed to find tag links");
+    }
+
+    tagLinks.forEach((tagLink) => {
+      expect(tagLink).toHaveAttribute("href", tagHref);
+      expect(tagLink).toHaveTextContent(tag);
+    });
+  });
 }
 
 const postNumWord: PostNumWord = {
