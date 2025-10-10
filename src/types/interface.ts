@@ -168,3 +168,6 @@ export interface ProjectSliderArrowProps {
 export interface SingleTagContext {
   tag: string;
 }
+export interface TagsListProps {
+  tags: string[];
+}
