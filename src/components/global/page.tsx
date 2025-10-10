@@ -6,17 +6,16 @@ import { styled } from "@mui/system";
 
 import { SiteFooter } from "./site-footer";
 import { ThemeSelector } from "./theme-selector";
+import { styleOverridesResolver } from "../../utils";
 import { SiteHeader } from "../header/site-header";
 
 type PageProps = {
   children: React.ReactNode;
 };
 
-const PageContainer = styled("div", {
+export const PageContainer = styled("div", {
   name: "MuiPageContainer",
-  overridesResolver: (_, styles) => {
-    return styles.root;
-  },
+  overridesResolver: styleOverridesResolver,
 })``;
 
 export const Page = ({ children }: PageProps): JSX.Element => {
