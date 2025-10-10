@@ -77,7 +77,7 @@ export const mockTags: TagsPageProps = {
   },
 };
 
-const postOne = {
+export const postOne = {
   id: "post-one-id",
   fields: {
     slug: "/blog/post-one/",
@@ -91,7 +91,7 @@ const postOne = {
   },
 };
 
-const postTwo = {
+export const postTwo = {
   id: "post-two-id",
   fields: {
     slug: "/blog/post-two/",
