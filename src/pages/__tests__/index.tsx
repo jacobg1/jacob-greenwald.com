@@ -9,15 +9,18 @@ import {
   mockProjects,
   projectOne,
   projectTwo,
-  parseHtmlString,
+  updateProjectOrder,
+  testProject,
+  testMetadata,
 } from "../../../__utils__";
-import type { ProjectNode, PageContent, TextMatcher } from "../../types";
+import type { PageContent } from "../../types";
 import ProjectsPage, { Head } from "../index";
 
 const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
 
 const title = "Projects page title";
 const testContent = "project page html";
+const secondProjectLabel = "# 2";
 
 const data = {
   content: {
@@ -28,23 +31,6 @@ const data = {
 
 const mockPageProps = getMockPageProps<PageContent>(data);
 
-function testProject(
-  getByText: TextMatcher,
-  getByTestId: TextMatcher,
-  {
-    node: {
-      html,
-      frontmatter: { title, iconName, app, repo },
-    },
-  }: ProjectNode
-): void {
-  expect(getByText(title)).toBeVisible();
-  expect(getByText(parseHtmlString(html))).toBeVisible();
-  expect(getByTestId(`${iconName}-icon`));
-  expect(getByTestId(`${title}-app-button`)).toHaveAttribute("href", app);
-  expect(getByTestId(`${title}-repo-button`)).toHaveAttribute("href", repo);
-}
-
 describe("projects page", () => {
   afterEach(() => {
     jest.restoreAllMocks();
@@ -53,18 +39,46 @@ describe("projects page", () => {
   it("renders content and title properly", () => {
     useStaticQuery.mockImplementation(() => mockProjects);
 
-    const { getByText, getByRole, getByTestId } = render(
+    const { getByText } = render(
       <ProjectsPage data={data} {...mockPageProps} />
     );
 
     expect(getByText(title)).toBeVisible();
     expect(getByText(testContent)).toBeVisible();
+  });
+
+  it("projects are rendered properly", () => {
+    useStaticQuery.mockImplementation(() => mockProjects);
+
+    const { getByText, getByRole, getByTestId } = render(
+      <ProjectsPage data={data} {...mockPageProps} />
+    );
 
     testProject(getByText, getByTestId, projectOne);
 
-    // Click on second project and verify visibility
-    fireEvent.click(getByRole("tab", { name: "# 2" }));
+    fireEvent.click(getByRole("tab", { name: secondProjectLabel }));
     testProject(getByText, getByTestId, projectTwo);
+  });
+
+  it("projects respect the order property", () => {
+    useStaticQuery.mockImplementation(() => ({
+      projects: {
+        ...mockProjects.projects,
+        edges: [
+          updateProjectOrder(1, projectTwo),
+          updateProjectOrder(2, projectOne),
+        ],
+      },
+    }));
+
+    const { getByText, getByRole, getByTestId } = render(
+      <ProjectsPage data={data} {...mockPageProps} />
+    );
+
+    testProject(getByText, getByTestId, projectTwo);
+
+    fireEvent.click(getByRole("tab", { name: secondProjectLabel }));
+    testProject(getByText, getByTestId, projectOne);
   });
 
   it("renders metadata properly", () => {
@@ -76,10 +90,9 @@ describe("projects page", () => {
       container: document.head,
     });
 
-    const metaTitle = container.querySelector("title");
-    expect(metaTitle?.textContent).toBe(mockMetadata.title);
-
-    const canonical = container.querySelector('[rel="canonical"]');
-    expect(canonical).toHaveAttribute("href", mockMetadata.siteUrl);
+    testMetadata(container, {
+      title: mockMetadata.title,
+      canonicalHref: mockMetadata.siteUrl,
+    });
   });
 });

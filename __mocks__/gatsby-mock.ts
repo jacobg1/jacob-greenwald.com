@@ -6,6 +6,7 @@ jest.mock("gatsby", () => {
     ...gatsby,
     graphql: jest.fn(),
     useStaticQuery: jest.fn(),
+    navigate: jest.fn(),
     Link: jest
       .fn()
       .mockImplementation(

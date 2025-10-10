@@ -22,7 +22,7 @@ export interface BlogsListProps<Node = BlogListNode> {
   postsData: {
     nodes: Node[];
   };
-  tagsData: {
+  tagsData?: {
     group: TagsData[];
   };
 }

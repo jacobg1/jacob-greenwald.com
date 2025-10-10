@@ -8,6 +8,7 @@ import {
   getMockPageProps,
   mockSkills,
   mockMetadata,
+  testMetadata,
 } from "../../../__utils__";
 import type { PageContentWithImage } from "../../types";
 import AboutPage, { Head } from "../about";
@@ -54,10 +55,9 @@ describe("about", () => {
       container: document.head,
     });
 
-    const metaTitle = container.querySelector("title");
-    expect(metaTitle?.textContent).toBe(title);
-
-    const canonical = container.querySelector('[rel="canonical"]');
-    expect(canonical).toHaveAttribute("href", `${mockMetadata.siteUrl}/about`);
+    testMetadata(container, {
+      title,
+      canonicalHref: `${mockMetadata.siteUrl}/about`,
+    });
   });
 });
