@@ -18,7 +18,7 @@ const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
 
 const { singleBlogOne, singleBlogTwo } = mockSingleBlogPosts;
 
-const mockHeadProps = getMockHeadProps(`/${singleBlogOne.post.fields.slug}`);
+const mockHeadProps = getMockHeadProps(singleBlogOne.post.fields.slug);
 
 describe("blog list template", () => {
   afterEach(() => {
@@ -48,7 +48,7 @@ describe("blog list template", () => {
     });
   });
 
-  it("next and previous buttons render previously", () => {
+  it("next and previous buttons render properly", () => {
     const pagePropsOne = getMockPageProps<SingleBlogProps>(singleBlogOne);
     const pagePropsTwo = getMockPageProps<SingleBlogProps>(singleBlogTwo);
     const ComponentOne = (): JSX.Element => (
@@ -105,7 +105,7 @@ describe("blog list template", () => {
 
     testMetadata(container, {
       title,
-      canonicalHref: `${mockMetadata.siteUrl}/${slug}`,
+      canonicalHref: `${mockMetadata.siteUrl}${slug}`,
     });
   });
 });
