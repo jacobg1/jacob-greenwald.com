@@ -5,12 +5,13 @@ import type {
   PostNumWord,
   NextOrPrevBlogCreate,
   QueryMatcher,
-} from "./types";
+} from "./test-types";
 import type {
   BlogListNode,
   HtmlString,
   ProjectNode,
   SingleBlogProps,
+  SiteTheme,
 } from "../src/types";
 
 export function parseHtmlString(htmlString: HtmlString): string {
@@ -95,6 +96,18 @@ export function testBlogListItem(
       expect(tagLink).toHaveTextContent(tag);
     });
   });
+}
+
+export function testThemeSelector(
+  selectedTheme: SiteTheme,
+  mockSetState: jest.Mock,
+  mockClose: jest.Mock
+): void {
+  expect(mockSetState).toHaveBeenCalledTimes(1);
+  expect(mockClose).toHaveBeenCalledTimes(1);
+
+  expect(mockSetState).toHaveBeenCalledWith(selectedTheme);
+  expect(mockClose).toHaveBeenCalled();
 }
 
 const postNumWord: PostNumWord = {
