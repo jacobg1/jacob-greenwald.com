@@ -3,6 +3,7 @@ import {
   ProjectIconName,
   SiteTheme,
   SkillsEnum,
+  type EmojiConfig,
   type ProjectsListContent,
   type SiteMetadata,
   type Skill,
@@ -148,3 +149,16 @@ export const testThemeMap = {
     themeColor: "test color two",
   },
 };
+
+export const testEmojiConfig: EmojiConfig[] = [
+  {
+    emoji: "😎",
+    name: "guy",
+    theme: { is: [SiteTheme.SILVER] },
+  },
+  {
+    emoji: "🍕",
+    name: "pizza",
+    theme: { not: [SiteTheme.SILVER] },
+  },
+];
