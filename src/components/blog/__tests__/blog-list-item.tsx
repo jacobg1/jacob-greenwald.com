@@ -27,6 +27,6 @@ describe("blog list item component", () => {
 
     const { queryAllByTestId } = render(<BlogListItem {...postWithoutTags} />);
 
-    expect(queryAllByTestId(/tag-name/).length).toEqual(0);
+    expect(queryAllByTestId(/tag-name/).length).toBe(0);
   });
 });

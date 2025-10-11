@@ -15,7 +15,7 @@ describe("get theme", () => {
           primary: { main },
         },
       } = theme;
-      expect(main).toEqual(themeColorLookup[siteTheme]);
+      expect(main).toBe(themeColorLookup[siteTheme]);
     });
   });
 
@@ -26,6 +26,6 @@ describe("get theme", () => {
         primary: { main },
       },
     } = theme;
-    expect(main).toEqual(themeColorLookup[SiteTheme.SILVER]);
+    expect(main).toBe(themeColorLookup[SiteTheme.SILVER]);
   });
 });
