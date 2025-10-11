@@ -1,14 +1,6 @@
+import { themeColorLookup } from "../../../__utils__";
 import { SiteTheme } from "../../types";
 import { getTheme } from "../theme";
-
-const themeColorLookup = {
-  [SiteTheme.SILVER]: "#014b95",
-  [SiteTheme.GOLD]: "#b10c0c",
-  [SiteTheme.BRONZE]: "#900c3f",
-  [SiteTheme.CLASSIC]: "#0000cc",
-  [SiteTheme.NEON]: "#f00",
-  [SiteTheme.CAKE]: "#a90000",
-};
 
 describe("get theme", () => {
   afterEach(() => {

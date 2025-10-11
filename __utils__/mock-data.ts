@@ -1,6 +1,7 @@
 import { createSinglePost } from "./general-utils";
 import {
   ProjectIconName,
+  SiteTheme,
   SkillsEnum,
   type ProjectsListContent,
   type SiteMetadata,
@@ -128,4 +129,13 @@ export const mockBlogList = {
 export const mockSingleBlogPosts = {
   singleBlogOne: createSinglePost(1, { nextBlog: true, prevBlog: false }),
   singleBlogTwo: createSinglePost(2, { nextBlog: true, prevBlog: true }),
+};
+
+export const themeColorLookup = {
+  [SiteTheme.SILVER]: "#014b95",
+  [SiteTheme.GOLD]: "#b10c0c",
+  [SiteTheme.BRONZE]: "#900c3f",
+  [SiteTheme.CLASSIC]: "#0000cc",
+  [SiteTheme.NEON]: "#f00",
+  [SiteTheme.CAKE]: "#a90000",
 };
