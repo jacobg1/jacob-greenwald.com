@@ -51,10 +51,10 @@ const config: Config = {
     // Starting these a bit lower
     // Will bump these up as more coverage is added
     global: {
-      branches: 50,
-      functions: 50,
-      lines: 50,
-      statements: 50,
+      branches: 75,
+      functions: 75,
+      lines: 75,
+      statements: 75,
     },
   },
 };
