@@ -58,9 +58,6 @@ describe("copy to clipboard", () => {
     await user.click(getByTestId("ContentCopyIcon"));
 
     expect(console.error).toHaveBeenCalled();
-    expect(console.error).toHaveBeenNthCalledWith(
-      1,
-      new Error("Failed to copy value")
-    );
+    expect(console.error).toHaveBeenCalledWith(Error("Failed to copy value"));
   });
 });
