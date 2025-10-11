@@ -148,3 +148,11 @@ export function createSinglePost(
     ...createNextOrPrevBlog("previous", prev, prevBlog),
   };
 }
+
+export async function getClipboardValue(nav: Navigator): Promise<string> {
+  try {
+    return await nav.clipboard.readText();
+  } catch {
+    return "";
+  }
+}
