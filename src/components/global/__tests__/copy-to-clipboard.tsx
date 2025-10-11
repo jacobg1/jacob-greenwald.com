@@ -31,7 +31,7 @@ describe("copy to clipboard", () => {
     const user = userEvent.setup();
 
     const { getByTestId } = render(
-      <CopyToClipboard isMobileHeader={false} value={testValue} />
+      <CopyToClipboard isMobileHeader={true} value={testValue} />
     );
 
     await user.click(getByTestId("ContentCopyIcon"));
@@ -39,5 +39,28 @@ describe("copy to clipboard", () => {
 
     await user.click(getByTestId("LibraryAddCheckIcon"));
     expect(await getClipboardValue(navigator)).toBe("");
+  });
+
+  it("error is caught properly if writeText fails", async () => {
+    const user = userEvent.setup();
+
+    jest.spyOn(console, "error").mockImplementation(() => {});
+    const mockWriteText = jest.spyOn(navigator.clipboard, "writeText");
+
+    mockWriteText.mockImplementation(() => {
+      throw new Error("writeText failed");
+    });
+
+    const { getByTestId } = render(
+      <CopyToClipboard isMobileHeader={false} value={testValue} />
+    );
+
+    await user.click(getByTestId("ContentCopyIcon"));
+
+    expect(console.error).toHaveBeenCalled();
+    expect(console.error).toHaveBeenNthCalledWith(
+      1,
+      new Error("Failed to copy value")
+    );
   });
 });
