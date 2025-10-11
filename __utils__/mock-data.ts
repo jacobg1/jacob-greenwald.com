@@ -139,3 +139,12 @@ export const themeColorLookup = {
   [SiteTheme.NEON]: "#f00",
   [SiteTheme.CAKE]: "#a90000",
 };
+
+export const testThemeMap = {
+  TEST_ONE: {
+    themeColor: "test color one",
+  },
+  TEST_TWO: {
+    themeColor: "test color two",
+  },
+};
