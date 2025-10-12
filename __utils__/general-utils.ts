@@ -169,3 +169,8 @@ export async function getClipboardValue(nav: Navigator): Promise<string> {
     return "";
   }
 }
+
+export function normalizePath(href: string): string {
+  if (href === "/") return href;
+  return href.endsWith("/") ? href.slice(0, -1) : href;
+}
