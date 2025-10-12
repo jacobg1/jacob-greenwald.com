@@ -1,3 +1,8 @@
+import { type ReactElement, createElement } from "react";
+
+import type { GatsbyBrowser } from "gatsby";
+
+import { getMockPageProps } from "./gatsby-props";
 import type {
   TextMatcher,
   MockMetadata,
@@ -188,4 +193,38 @@ export function setupLocalStore(): SetupLocalStore {
   });
 
   return { mockGetItem, mockSetItem };
+}
+
+export function RootWrappedElement(
+  text: string,
+  fn: GatsbyBrowser["wrapRootElement"]
+): ReactElement {
+  if (!fn) throw new Error("failed to import method");
+
+  return fn(
+    {
+      element: createElement("p", null, text),
+      getResourceURLsForPathname: jest.fn(),
+      pathname: "/",
+    },
+    { plugins: [] }
+  );
+}
+
+export function PageWrappedElement(
+  text: string,
+  fn: GatsbyBrowser["wrapPageElement"]
+): ReactElement {
+  if (!fn) throw new Error("failed to import method");
+
+  const data = { test: true };
+
+  return fn(
+    {
+      element: createElement("p", null, text),
+      props: { data, ...getMockPageProps(data) },
+      getResourceURLsForPathname: jest.fn(),
+    },
+    { plugins: [] }
+  );
 }
