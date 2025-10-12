@@ -48,13 +48,11 @@ const config: Config = {
     "**/pages/index.tsx",
   ],
   coverageThreshold: {
-    // Starting these a bit lower
-    // Will bump these up as more coverage is added
     global: {
-      branches: 75,
-      functions: 75,
-      lines: 75,
-      statements: 75,
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80,
     },
   },
 };
