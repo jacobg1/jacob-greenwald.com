@@ -5,6 +5,7 @@ import type {
   PostNumWord,
   NextOrPrevBlogCreate,
   QueryMatcher,
+  SetupLocalStore,
 } from "./test-types";
 import type {
   BlogListNode,
@@ -173,4 +174,18 @@ export async function getClipboardValue(nav: Navigator): Promise<string> {
 export function normalizePath(href: string): string {
   if (href === "/") return href;
   return href.endsWith("/") ? href.slice(0, -1) : href;
+}
+
+export function setupLocalStore(): SetupLocalStore {
+  const mockGetItem = jest.fn();
+  const mockSetItem = jest.fn();
+
+  Object.defineProperty(window, "localStorage", {
+    value: {
+      getItem: mockGetItem,
+      setItem: mockSetItem,
+    },
+  });
+
+  return { mockGetItem, mockSetItem };
 }

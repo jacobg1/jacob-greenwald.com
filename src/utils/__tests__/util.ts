@@ -5,6 +5,7 @@ import {
   includesTags,
   handleSliderArrow,
   getEmojisToShow,
+  getServerSnapshot,
 } from "../util";
 
 describe("utils", () => {
@@ -37,5 +38,9 @@ describe("utils", () => {
 
     const [guy] = getEmojisToShow(SiteTheme.SILVER, testEmojiConfig);
     expect(guy.emoji).toBe("😎");
+  });
+
+  it("getServerSnapshot works properly", () => {
+    expect(getServerSnapshot("test")()).toBe("test");
   });
 });

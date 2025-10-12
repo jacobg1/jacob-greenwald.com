@@ -50,3 +50,7 @@ export function handleSliderArrow(
     return isLast ? 0 : value + 1;
   }
 }
+
+export function getServerSnapshot(defaultValue: string): () => string {
+  return () => defaultValue;
+}

@@ -171,3 +171,8 @@ export interface SingleTagContext {
 export interface TagsListProps {
   tags: string[];
 }
+
+export type UseLocalStorageResponse = [
+  value: string,
+  setValue: (value: string) => void,
+];

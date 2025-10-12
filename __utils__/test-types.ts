@@ -44,3 +44,8 @@ export interface NextOrPrev {
 }
 
 export type NextOrPrevBlogCreate = Pick<SingleBlogProps, "next" | "previous">;
+
+export interface SetupLocalStore {
+  mockGetItem: jest.Mock;
+  mockSetItem: jest.Mock;
+}
