@@ -18,6 +18,10 @@ const mockQueryResults = {
   site: { siteMetadata: mockMetadata },
 };
 
+jest.mock("../../../hooks/use-navlinks-query", () => ({
+  useNavLinksQuery: jest.fn(),
+}));
+
 describe("global page", () => {
   afterEach(() => {
     jest.restoreAllMocks();
