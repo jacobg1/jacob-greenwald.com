@@ -1,5 +1,6 @@
 import { createSinglePost } from "./general-utils";
 import {
+  NavLinkItem,
   ProjectIconName,
   SiteTheme,
   SkillsEnum,
@@ -160,5 +161,28 @@ export const testEmojiConfig: EmojiConfig[] = [
     emoji: "🍕",
     name: "pizza",
     theme: { not: [SiteTheme.SILVER] },
+  },
+];
+
+export const mockNavLinks: NavLinkItem[] = [
+  {
+    text: "Home",
+    destination: "/",
+    newTab: false,
+  },
+  {
+    text: "Test",
+    destination: "/test",
+    newTab: false,
+  },
+  {
+    text: "Test Two",
+    destination: "/test-two",
+    newTab: true,
+  },
+  {
+    text: "Second Tag",
+    destination: "/tags/second-tag/",
+    newTab: false,
   },
 ];
