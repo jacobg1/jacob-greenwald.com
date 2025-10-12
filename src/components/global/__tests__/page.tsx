@@ -8,19 +8,11 @@ import {
 import { render } from "@testing-library/react";
 import * as Gatsby from "gatsby";
 
-import { mockMetadata } from "../../../../__utils__";
+import { mockMetadata, mockNavLinks } from "../../../../__utils__";
 import { useNavLinksQuery } from "../../../hooks/use-navlinks-query";
 import { Page } from "../page";
 
 const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
-
-const mockNavLinks = [
-  {
-    text: "Another Page",
-    destination: "/another-page",
-    newTab: false,
-  },
-];
 
 const mockQueryResults = {
   site: { siteMetadata: mockMetadata },
@@ -38,15 +30,16 @@ describe("global page", () => {
 
   it("renders properly", () => {
     const mockHistory = createHistory(createMemorySource("/"));
+    const content = "Page Content";
 
     const { queryByText } = render(
       <LocationProvider history={mockHistory}>
         <Page>
-          <div>Test</div>
+          <div>{content}</div>
         </Page>
       </LocationProvider>
     );
 
-    expect(queryByText("Test")).toBeVisible();
+    expect(queryByText(content)).toBeVisible();
   });
 });
