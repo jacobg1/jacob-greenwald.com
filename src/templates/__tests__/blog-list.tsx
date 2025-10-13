@@ -20,7 +20,7 @@ const navigate = jest.spyOn(Gatsby, "navigate");
 const title = "Blog Posts";
 
 const mockPageContext = {
-  totalPages: 2,
+  totalPages: 3,
   currentPage: 1,
 };
 
@@ -61,7 +61,7 @@ describe("blog list template", () => {
       <BlogListPage data={data} {...mockPageProps} />
     );
 
-    [1, 2].forEach((num) => {
+    [1, 2, 3].forEach((num) => {
       const exp = new RegExp(`page ${num}`);
       expect(getByLabelText(exp)).toBeEnabled();
     });
@@ -75,7 +75,7 @@ describe("blog list template", () => {
       <BlogListPage data={data} {...mockPageProps} />
     );
 
-    [1, 2].forEach((num) => {
+    [1, 2, 3].forEach((num) => {
       const exp = new RegExp(`page ${num}`);
       fireEvent.click(getByLabelText(exp));
 
