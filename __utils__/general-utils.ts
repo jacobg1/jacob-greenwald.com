@@ -111,9 +111,7 @@ export function testThemeSelector(
 ): void {
   expect(mockSetState).toHaveBeenCalledTimes(1);
   expect(mockClose).toHaveBeenCalledTimes(1);
-
   expect(mockSetState).toHaveBeenCalledWith(selectedTheme);
-  expect(mockClose).toHaveBeenCalled();
 }
 
 const postNumWord: PostNumWord = {

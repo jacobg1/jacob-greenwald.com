@@ -14,14 +14,14 @@ describe("theme selector", () => {
 
   it("theme selector opens and closes on theme selection", async () => {
     const user = userEvent.setup();
-
     const { getByText, queryByText } = render(<ThemeSelector />);
+
     await user.click(getByText("Change Theme"));
 
     const themeName = capitalizeWord(SiteTheme.GOLD);
     const themeToSelect = getByText(themeName);
-    expect(themeToSelect).toBeInTheDocument();
 
+    expect(themeToSelect).toBeInTheDocument();
     await user.click(themeToSelect);
     expect(queryByText(themeName)).not.toBeInTheDocument();
   });

@@ -16,7 +16,7 @@ describe("blog list item component", () => {
     });
   });
 
-  it("doesn't show tags if none available", () => {
+  it("doesn't show tags if none are available", () => {
     const postWithoutTags = {
       ...postOne,
       frontmatter: {

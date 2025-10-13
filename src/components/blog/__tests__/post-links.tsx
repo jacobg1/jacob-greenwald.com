@@ -7,7 +7,7 @@ import { NextPostLink, PreviousPostLink } from "../post-links";
 
 describe("post links", () => {
   it("renders the next post link", () => {
-    const { container } = render(<NextPostLink post={postOne} />);
+    const { container } = render(<NextPostLink post={postTwo} />);
     expect(container).not.toBeEmptyDOMElement();
   });
 
@@ -17,7 +17,7 @@ describe("post links", () => {
   });
 
   it("renders the previous post link", () => {
-    const { queryByText } = render(<PreviousPostLink post={postTwo} />);
+    const { queryByText } = render(<PreviousPostLink post={postOne} />);
     expect(queryByText("prev")).not.toBeNull();
   });
 

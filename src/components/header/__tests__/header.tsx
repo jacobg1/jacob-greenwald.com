@@ -72,7 +72,7 @@ describe("header", () => {
     expect(menuIcon).toBeInTheDocument();
   });
 
-  it("MobileHeader renders properly", () => {
+  it("MobileHeader closes when new page is selected", () => {
     const mockClickHandler = jest.fn();
 
     render(
