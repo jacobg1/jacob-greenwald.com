@@ -1,3 +1,5 @@
+import type { HistoryListenerParameter } from "@reach/router";
+
 import { testEmojiConfig } from "../../../__utils__";
 import { SiteTheme, SliderDirection } from "../../types";
 import {
@@ -49,12 +51,12 @@ describe("utils", () => {
     const mockClickHandler = jest.fn();
     const listener = historyListener(mockClickHandler);
 
-    listener({ action: "PUSH" });
+    listener({ action: "PUSH" } as HistoryListenerParameter);
     expect(mockClickHandler).toHaveBeenCalled();
 
     mockClickHandler.mockClear();
 
-    listener({ action: "POP" });
+    listener({ action: "POP" } as HistoryListenerParameter);
     expect(mockClickHandler).not.toHaveBeenCalled();
   });
 });

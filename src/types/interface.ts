@@ -1,6 +1,5 @@
 import type { ReactNode, FunctionComponent, SVGAttributes } from "react";
 
-import type { HistoryActionType } from "@reach/router";
 import type { IGatsbyImageData } from "gatsby-plugin-image";
 
 import { ProjectIconName, SiteTheme, SliderDirection } from "./enum";
@@ -181,7 +180,3 @@ export type UseLocalStorageResponse = [
   value: string,
   setValue: (value: string) => void,
 ];
-
-export interface ListenerParams {
-  action: HistoryActionType;
-}

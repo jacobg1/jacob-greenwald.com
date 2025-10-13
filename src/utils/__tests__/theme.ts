@@ -1,5 +1,5 @@
 import { testThemeMap } from "../../../__utils__";
-import { ThemeMap } from "../../types";
+import type { ThemeMap } from "../../types";
 import { getThemeBackgroundColor, styleOverridesResolver } from "../theme";
 
 describe("theme utils", () => {

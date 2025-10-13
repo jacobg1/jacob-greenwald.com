@@ -1,9 +1,6 @@
-import {
-  type EmojiConfig,
-  type ListenerParams,
-  SiteTheme,
-  SliderDirection,
-} from "../types";
+import type { HistoryListener, HistoryListenerParameter } from "@reach/router";
+
+import { type EmojiConfig, SiteTheme, SliderDirection } from "../types";
 
 export const includesBlog = (
   normalizePath: string,
@@ -60,8 +57,8 @@ export function getServerSnapshot(defaultValue: string): () => string {
   return () => defaultValue;
 }
 
-export function historyListener(onClick: () => void) {
-  return ({ action }: ListenerParams): void => {
+export function historyListener(onClick: () => void): HistoryListener {
+  return ({ action }: HistoryListenerParameter): void => {
     if (action === "PUSH") onClick();
   };
 }
