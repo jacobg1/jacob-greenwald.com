@@ -13,7 +13,7 @@ type PageProps = {
   children: React.ReactNode;
 };
 
-export const PageContainer = styled("div", {
+const PageContainer = styled("div", {
   name: "MuiPageContainer",
   overridesResolver: styleOverridesResolver,
 })``;
