@@ -1,3 +1,5 @@
+import { createElement, type ReactElement } from "react";
+
 import { createSinglePost } from "./general-utils";
 import {
   NavLinkItem,
@@ -186,3 +188,17 @@ export const mockNavLinks: NavLinkItem[] = [
     newTab: false,
   },
 ];
+
+const { VINYL, SPACE, GRAPH } = ProjectIconName;
+
+const getSvgProps = (name: ProjectIconName): { [x: string]: string } => {
+  return {
+    "data-testid": `${name}-svg`,
+  };
+};
+
+export const mockProjectIconMap = {
+  [VINYL]: (): ReactElement => createElement("svg", getSvgProps(VINYL)),
+  [SPACE]: (): ReactElement => createElement("svg", getSvgProps(SPACE)),
+  [GRAPH]: (): ReactElement => createElement("svg", getSvgProps(GRAPH)),
+};
