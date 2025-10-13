@@ -1,16 +1,14 @@
 import { useCallback, useSyncExternalStore } from "react";
 
+import type { UseLocalStorageResponse } from "../types";
+import { getServerSnapshot } from "../utils";
+
 function subscribe(cb: () => void): () => void {
   window?.addEventListener("storage", cb);
   return () => {
     window?.removeEventListener("storage", cb);
   };
 }
-
-type UseLocalStorageResponse = [
-  value: string,
-  setValue: (value: string) => void,
-];
 
 export function useLocalStorage(
   key: string,
@@ -24,11 +22,6 @@ export function useLocalStorage(
       return defaultValue;
     }
   }, [key, defaultValue]);
-
-  const valueFromServer = useCallback(
-    () => defaultServerValue,
-    [defaultServerValue]
-  );
 
   const setValue = useCallback(
     (value: string) => {
@@ -45,7 +38,7 @@ export function useLocalStorage(
   const value = useSyncExternalStore(
     subscribe,
     valueFromLocalStorage,
-    valueFromServer
+    getServerSnapshot(defaultServerValue)
   );
 
   return [value, setValue];

@@ -2,7 +2,11 @@ import * as React from "react";
 
 import type { WindowLocation } from "@reach/router";
 
-import type { MockParams, GetMockPageProps, GetMockHeadProps } from "./types";
+import type {
+  MockParams,
+  GetMockPageProps,
+  GetMockHeadProps,
+} from "./test-types";
 
 const mockParams = {
   test: "true",

@@ -8,6 +8,7 @@ import { styled } from "@mui/system";
 import { globalHistory } from "@reach/router";
 
 import { MobileHeaderProps } from "../../types";
+import { historyListener, styleOverridesResolver } from "../../utils";
 import { SiteLinks } from "../global/navigation";
 import { SiteEmail } from "../global/site-email";
 
@@ -28,9 +29,7 @@ const mobileHeaderStyles: SxProps = {
 
 const MobileHeaderContainer = styled("div", {
   name: "MuiMobileHeaderContainer",
-  overridesResolver: (_, styles) => {
-    return styles.root;
-  },
+  overridesResolver: styleOverridesResolver,
 })``;
 
 export const MobileHeader = ({
@@ -39,9 +38,7 @@ export const MobileHeader = ({
   onClick,
 }: MobileHeaderProps): JSX.Element => {
   useEffect(() => {
-    return globalHistory.listen(({ action }) => {
-      if (action === "PUSH") onClick();
-    });
+    return globalHistory.listen(historyListener(onClick));
   }, [onClick]);
   return (
     <Drawer anchor="right" open={isOpen} onClose={onClick}>

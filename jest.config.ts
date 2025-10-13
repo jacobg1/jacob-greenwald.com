@@ -8,6 +8,7 @@ const config: Config = {
     ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
     ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
       "<rootDir>/__mocks__/file-mock.ts",
+    "^@reach/router(.*)": `<rootDir>/node_modules/@gatsbyjs/reach-router$1`,
   },
   testPathIgnorePatterns: ["node_modules", "\\.cache", "<rootDir>.*/public"],
   transformIgnorePatterns: [
@@ -43,13 +44,11 @@ const config: Config = {
     "**/pages/index.tsx",
   ],
   coverageThreshold: {
-    // Starting these a bit lower
-    // Will bump these up as more coverage is added
     global: {
-      branches: 30,
-      functions: 30,
-      lines: 30,
-      statements: 30,
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
     },
   },
 };

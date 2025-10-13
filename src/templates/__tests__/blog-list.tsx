@@ -8,6 +8,7 @@ import {
   getMockPageProps,
   mockBlogList,
   mockMetadata,
+  testBlogListItem,
   testMetadata,
 } from "../../../__utils__";
 import type { BlogsListProps, BlogListContext } from "../../types";
@@ -19,7 +20,7 @@ const navigate = jest.spyOn(Gatsby, "navigate");
 const title = "Blog Posts";
 
 const mockPageContext = {
-  totalPages: 2,
+  totalPages: 3,
   currentPage: 1,
 };
 
@@ -50,24 +51,8 @@ describe("blog list template", () => {
       postsData: { nodes: posts },
     } = data;
 
-    for (const {
-      fields: { slug },
-      frontmatter: { title, date, description, tags },
-    } of posts) {
-      expect(getByText(title)).toHaveAttribute("href", slug);
-      expect(getByText(date)).toBeVisible();
-      expect(getByText(description)).toBeVisible();
-
-      tags.forEach((tag) => {
-        const testId = `tag-name-${tag}`;
-        const tagHref = `/tags/${tag.toLocaleLowerCase()}/`;
-        const tagLinks = queryAllByTestId(testId);
-
-        tagLinks.forEach((tagLink) => {
-          expect(tagLink).toHaveAttribute("href", tagHref);
-          expect(tagLink).toHaveTextContent(tag);
-        });
-      });
+    for (const post of posts) {
+      testBlogListItem(getByText, queryAllByTestId, post);
     }
   });
 
@@ -76,7 +61,7 @@ describe("blog list template", () => {
       <BlogListPage data={data} {...mockPageProps} />
     );
 
-    [1, 2].forEach((num) => {
+    [1, 2, 3].forEach((num) => {
       const exp = new RegExp(`page ${num}`);
       expect(getByLabelText(exp)).toBeEnabled();
     });
@@ -90,7 +75,7 @@ describe("blog list template", () => {
       <BlogListPage data={data} {...mockPageProps} />
     );
 
-    [1, 2].forEach((num) => {
+    [1, 2, 3].forEach((num) => {
       const exp = new RegExp(`page ${num}`);
       fireEvent.click(getByLabelText(exp));
 

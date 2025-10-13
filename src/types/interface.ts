@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, FunctionComponent, SVGAttributes } from "react";
 
 import type { IGatsbyImageData } from "gatsby-plugin-image";
 
@@ -135,6 +135,10 @@ export interface ButtonLinkProps {
 
 export interface ProjectIconProps {
   iconName: ProjectIconName;
+  iconMap: Record<
+    ProjectIconName,
+    FunctionComponent<SVGAttributes<SVGElement>>
+  >;
 }
 
 export interface ThemeSelectorButtonProps {
@@ -168,3 +172,11 @@ export interface ProjectSliderArrowProps {
 export interface SingleTagContext {
   tag: string;
 }
+export interface TagsListProps {
+  tags: string[];
+}
+
+export type UseLocalStorageResponse = [
+  value: string,
+  setValue: (value: string) => void,
+];
