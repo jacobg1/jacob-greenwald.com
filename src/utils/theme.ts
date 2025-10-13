@@ -1,3 +1,5 @@
+import type { CSSInterpolation } from "@mui/material";
+
 import type { ThemeMap, ThemeBackgroundColor } from "../types";
 
 export function getThemeBackgroundColor(
@@ -12,3 +14,10 @@ export function getThemeBackgroundColor(
     };
   }, {});
 }
+
+export const styleOverridesResolver = (
+  _: unknown,
+  styles: Record<string, CSSInterpolation>
+): CSSInterpolation => {
+  return styles.root;
+};

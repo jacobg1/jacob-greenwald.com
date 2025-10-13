@@ -1,3 +1,5 @@
+import type { HistoryListener, HistoryListenerParameter } from "@reach/router";
+
 import { type EmojiConfig, SiteTheme, SliderDirection } from "../types";
 
 export const includesBlog = (
@@ -49,4 +51,14 @@ export function handleSliderArrow(
     const isLast = value === lastProject;
     return isLast ? 0 : value + 1;
   }
+}
+
+export function getServerSnapshot(defaultValue: string): () => string {
+  return () => defaultValue;
+}
+
+export function historyListener(onClick: () => void): HistoryListener {
+  return ({ action }: HistoryListenerParameter): void => {
+    if (action === "PUSH") onClick();
+  };
 }

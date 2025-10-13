@@ -8,6 +8,7 @@ import { SiteLinks } from "./navigation";
 import { SiteEmail } from "./site-email";
 import { useNavLinksQuery } from "../../hooks/use-navlinks-query";
 import type { NavLinkItem } from "../../types";
+import { styleOverridesResolver } from "../../utils";
 
 const footerStyles: SxProps = {
   padding: { xs: "16px 17px", sm: 0 },
@@ -33,9 +34,7 @@ const footerStyles: SxProps = {
 
 const Footer = styled("footer", {
   name: "MuiFooter",
-  overridesResolver: (_, styles) => {
-    return styles.root;
-  },
+  overridesResolver: styleOverridesResolver,
 })``;
 
 export const SiteFooter = (): JSX.Element => {

@@ -1,11 +1,24 @@
+import { type ReactElement, createElement } from "react";
+
+import type { GatsbyBrowser } from "gatsby";
+
+import { getMockPageProps } from "./gatsby-props";
 import type {
   TextMatcher,
   MockMetadata,
   NextOrPrev,
   PostNumWord,
   NextOrPrevBlogCreate,
-} from "./types";
-import type { HtmlString, ProjectNode, SingleBlogProps } from "../src/types";
+  QueryMatcher,
+  SetupLocalStore,
+} from "./test-types";
+import type {
+  BlogListNode,
+  HtmlString,
+  ProjectNode,
+  SingleBlogProps,
+  SiteTheme,
+} from "../src/types";
 
 export function parseHtmlString(htmlString: HtmlString): string {
   const parser = new DOMParser();
@@ -63,6 +76,44 @@ export function testMetadata(
   // TODO - test more meta tags?
 }
 
+export function testBlogListItem(
+  getByText: TextMatcher,
+  queryAllByTestId: QueryMatcher,
+  {
+    fields: { slug },
+    frontmatter: { title, date, description, tags },
+  }: BlogListNode
+): void {
+  expect(getByText(title)).toHaveAttribute("href", slug);
+  expect(getByText(date)).toBeVisible();
+  expect(getByText(description)).toBeVisible();
+
+  tags.forEach((tag) => {
+    const testId = `tag-name-${tag}`;
+    const tagHref = `/tags/${tag.toLocaleLowerCase()}/`;
+    const tagLinks = queryAllByTestId(testId);
+
+    if (!tagLinks?.length) {
+      throw new Error("Failed to find tag links");
+    }
+
+    tagLinks.forEach((tagLink) => {
+      expect(tagLink).toHaveAttribute("href", tagHref);
+      expect(tagLink).toHaveTextContent(tag);
+    });
+  });
+}
+
+export function testThemeSelector(
+  selectedTheme: SiteTheme,
+  mockSetState: jest.Mock,
+  mockClose: jest.Mock
+): void {
+  expect(mockSetState).toHaveBeenCalledTimes(1);
+  expect(mockClose).toHaveBeenCalledTimes(1);
+  expect(mockSetState).toHaveBeenCalledWith(selectedTheme);
+}
+
 const postNumWord: PostNumWord = {
   "1": { reg: "one", up: "One" },
   "2": { reg: "two", up: "Two" },
@@ -113,4 +164,65 @@ export function createSinglePost(
     ...createNextOrPrevBlog("next", next, nextBlog),
     ...createNextOrPrevBlog("previous", prev, prevBlog),
   };
+}
+
+export async function getClipboardValue(nav: Navigator): Promise<string> {
+  try {
+    return await nav.clipboard.readText();
+  } catch {
+    return "";
+  }
+}
+
+export function normalizePath(href: string): string {
+  if (href === "/") return href;
+  return href.endsWith("/") ? href.slice(0, -1) : href;
+}
+
+export function setupLocalStore(): SetupLocalStore {
+  const mockGetItem = jest.fn();
+  const mockSetItem = jest.fn();
+
+  Object.defineProperty(window, "localStorage", {
+    value: {
+      getItem: mockGetItem,
+      setItem: mockSetItem,
+    },
+  });
+
+  return { mockGetItem, mockSetItem };
+}
+
+export function RootWrappedElement(
+  text: string,
+  fn: GatsbyBrowser["wrapRootElement"]
+): ReactElement {
+  if (!fn) throw new Error("failed to import method");
+
+  return fn(
+    {
+      element: createElement("p", null, text),
+      getResourceURLsForPathname: jest.fn(),
+      pathname: "/",
+    },
+    { plugins: [] }
+  );
+}
+
+export function PageWrappedElement(
+  text: string,
+  fn: GatsbyBrowser["wrapPageElement"]
+): ReactElement {
+  if (!fn) throw new Error("failed to import method");
+
+  const data = { test: true };
+
+  return fn(
+    {
+      element: createElement("p", null, text),
+      props: { data, ...getMockPageProps(data) },
+      getResourceURLsForPathname: jest.fn(),
+    },
+    { plugins: [] }
+  );
 }

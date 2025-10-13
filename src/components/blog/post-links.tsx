@@ -8,9 +8,7 @@ import { Link as InternalLink } from "gatsby";
 
 import type { PostButtonProps } from "../../types";
 
-export const PreviousPostLink = ({
-  post,
-}: PostButtonProps): JSX.Element | null => {
+export const PreviousPostLink = ({ post }: PostButtonProps): JSX.Element => {
   // Return an empty div to keep the next post button right aligned
   if (!post) return <Box />;
 

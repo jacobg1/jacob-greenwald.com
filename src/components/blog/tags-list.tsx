@@ -6,6 +6,7 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import { Link as InternalLink } from "gatsby";
 
+import type { TagsListProps } from "../../types";
 import { createTagPageLink } from "../../utils";
 
 const tagsListStyles: SxProps = {
@@ -27,10 +28,6 @@ const chipStyles: SxProps = {
     fontSize: "22px",
   },
 };
-
-interface TagsListProps {
-  tags: string[];
-}
 
 export const TagsList = ({ tags }: TagsListProps): JSX.Element | null => {
   if (!tags?.length) return null;

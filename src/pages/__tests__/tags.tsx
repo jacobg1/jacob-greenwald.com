@@ -27,8 +27,6 @@ describe("tags page", () => {
   });
 
   it("renders title and tags properly", () => {
-    useStaticQuery.mockImplementation(() => mockTags);
-
     const { getByText, getByTestId } = render(
       <TagsPage data={mockTags} {...mockPageProps} />
     );

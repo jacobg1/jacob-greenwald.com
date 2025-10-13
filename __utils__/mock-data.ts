@@ -1,7 +1,12 @@
+import { createElement, type ReactElement } from "react";
+
 import { createSinglePost } from "./general-utils";
 import {
+  NavLinkItem,
   ProjectIconName,
+  SiteTheme,
   SkillsEnum,
+  type EmojiConfig,
   type ProjectsListContent,
   type SiteMetadata,
   type Skill,
@@ -77,7 +82,7 @@ export const mockTags: TagsPageProps = {
   },
 };
 
-const postOne = {
+export const postOne = {
   id: "post-one-id",
   fields: {
     slug: "/blog/post-one/",
@@ -91,7 +96,7 @@ const postOne = {
   },
 };
 
-const postTwo = {
+export const postTwo = {
   id: "post-two-id",
   fields: {
     slug: "/blog/post-two/",
@@ -128,4 +133,72 @@ export const mockBlogList = {
 export const mockSingleBlogPosts = {
   singleBlogOne: createSinglePost(1, { nextBlog: true, prevBlog: false }),
   singleBlogTwo: createSinglePost(2, { nextBlog: true, prevBlog: true }),
+};
+
+export const themeColorLookup = {
+  [SiteTheme.SILVER]: "#014b95",
+  [SiteTheme.GOLD]: "#b10c0c",
+  [SiteTheme.BRONZE]: "#900c3f",
+  [SiteTheme.CLASSIC]: "#0000cc",
+  [SiteTheme.NEON]: "#f00",
+  [SiteTheme.CAKE]: "#a90000",
+};
+
+export const testThemeMap = {
+  TEST_ONE: {
+    themeColor: "test color one",
+  },
+  TEST_TWO: {
+    themeColor: "test color two",
+  },
+};
+
+export const testEmojiConfig: EmojiConfig[] = [
+  {
+    emoji: "😎",
+    name: "guy",
+    theme: { is: [SiteTheme.SILVER] },
+  },
+  {
+    emoji: "🍕",
+    name: "pizza",
+    theme: { not: [SiteTheme.SILVER] },
+  },
+];
+
+export const mockNavLinks: NavLinkItem[] = [
+  {
+    text: "Home",
+    destination: "/",
+    newTab: false,
+  },
+  {
+    text: "Test",
+    destination: "/test",
+    newTab: false,
+  },
+  {
+    text: "Test Two",
+    destination: "/test-two",
+    newTab: true,
+  },
+  {
+    text: "Second Tag",
+    destination: "/tags/second-tag/",
+    newTab: false,
+  },
+];
+
+const { VINYL, SPACE, GRAPH } = ProjectIconName;
+
+const getSvgProps = (name: ProjectIconName): { [x: string]: string } => {
+  return {
+    "data-testid": `${name}-svg`,
+  };
+};
+
+export const mockProjectIconMap = {
+  [VINYL]: (): ReactElement => createElement("svg", getSvgProps(VINYL)),
+  [SPACE]: (): ReactElement => createElement("svg", getSvgProps(SPACE)),
+  [GRAPH]: (): ReactElement => createElement("svg", getSvgProps(GRAPH)),
 };
