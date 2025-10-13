@@ -8,8 +8,10 @@ import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 
 import { ProjectIcon } from "./project-icon";
-import { ProjectProps } from "../../types";
-import { projectIconMap } from "../../utils";
+import { ReactComponent as GraphIcon } from "../../images/auto-graph.svg";
+import { ReactComponent as SpaceIcon } from "../../images/space-search.svg";
+import { ReactComponent as VinylIcon } from "../../images/vinyl.svg";
+import { ProjectIconName, type ProjectProps } from "../../types";
 import { ButtonLink } from "../global/button-link";
 import { Content } from "../global/content";
 
@@ -52,6 +54,12 @@ const projectStyles: SxProps = {
   "& a:hover": {
     textDecoration: "underline",
   },
+};
+
+const projectIconMap = {
+  [ProjectIconName.VINYL]: VinylIcon,
+  [ProjectIconName.SPACE]: SpaceIcon,
+  [ProjectIconName.GRAPH]: GraphIcon,
 };
 
 export const Project = ({

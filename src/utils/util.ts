@@ -1,12 +1,8 @@
-import { ReactComponent as GraphIcon } from "../images/auto-graph.svg";
-import { ReactComponent as SpaceIcon } from "../images/space-search.svg";
-import { ReactComponent as VinylIcon } from "../images/vinyl.svg";
 import {
   type EmojiConfig,
   type ListenerParams,
   SiteTheme,
   SliderDirection,
-  ProjectIconName,
 } from "../types";
 
 export const includesBlog = (
@@ -69,9 +65,3 @@ export function historyListener(onClick: () => void) {
     if (action === "PUSH") onClick();
   };
 }
-
-export const projectIconMap = {
-  [ProjectIconName.VINYL]: VinylIcon,
-  [ProjectIconName.SPACE]: SpaceIcon,
-  [ProjectIconName.GRAPH]: GraphIcon,
-};
