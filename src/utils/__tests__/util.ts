@@ -6,6 +6,7 @@ import {
   handleSliderArrow,
   getEmojisToShow,
   getServerSnapshot,
+  historyListener,
 } from "../util";
 
 describe("utils", () => {
@@ -42,5 +43,18 @@ describe("utils", () => {
 
   it("getServerSnapshot works properly", () => {
     expect(getServerSnapshot("test")()).toBe("test");
+  });
+
+  it("historyListener works properly", () => {
+    const mockClickHandler = jest.fn();
+    const listener = historyListener(mockClickHandler);
+
+    listener({ action: "PUSH" });
+    expect(mockClickHandler).toHaveBeenCalled();
+
+    mockClickHandler.mockClear();
+
+    listener({ action: "POP" });
+    expect(mockClickHandler).not.toHaveBeenCalled();
   });
 });
