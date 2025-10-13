@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, FunctionComponent, SVGAttributes } from "react";
 
 import type { HistoryActionType } from "@reach/router";
 import type { IGatsbyImageData } from "gatsby-plugin-image";
@@ -136,6 +136,10 @@ export interface ButtonLinkProps {
 
 export interface ProjectIconProps {
   iconName: ProjectIconName;
+  iconMap: Record<
+    ProjectIconName,
+    FunctionComponent<SVGAttributes<SVGElement>>
+  >;
 }
 
 export interface ThemeSelectorButtonProps {
