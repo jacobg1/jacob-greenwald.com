@@ -15,7 +15,7 @@ describe("navigation", () => {
     jest.restoreAllMocks();
   });
 
-  it("proprely renders nav links", () => {
+  it("properly renders nav links", () => {
     for (const href of ["/", "/test", "/test/"]) {
       const mockHistory = createHistory(createMemorySource(href));
 
