@@ -5,7 +5,7 @@ import {
   createHistory,
   LocationProvider,
 } from "@reach/router";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import * as Gatsby from "gatsby";
 
 import { mockMetadata, mockNavLinks } from "../../../../__utils__";
@@ -36,7 +36,7 @@ describe("global page", () => {
     const mockHistory = createHistory(createMemorySource("/"));
     const content = "Page Content";
 
-    const { queryByText } = render(
+    render(
       <LocationProvider history={mockHistory}>
         <Page>
           <div>{content}</div>
@@ -44,6 +44,6 @@ describe("global page", () => {
       </LocationProvider>
     );
 
-    expect(queryByText(content)).toBeVisible();
+    expect(screen.queryByText(content)).toBeVisible();
   });
 });

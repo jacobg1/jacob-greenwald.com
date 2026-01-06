@@ -5,7 +5,7 @@ import {
   createMemorySource,
   LocationProvider,
 } from "@reach/router";
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 
 import { mockNavLinks, normalizePath } from "../../../../__utils__";
 import { SiteLinks } from "../navigation";
@@ -19,14 +19,14 @@ describe("navigation", () => {
     for (const href of ["/", "/test", "/test/"]) {
       const mockHistory = createHistory(createMemorySource(href));
 
-      const { getByText } = render(
+      render(
         <LocationProvider history={mockHistory}>
           <SiteLinks navLinks={mockNavLinks} />
         </LocationProvider>
       );
 
       for (const { newTab, text, destination } of mockNavLinks) {
-        const link = getByText(text);
+        const link = screen.getByText(text);
 
         const normalizedPath = normalizePath(href);
         const expectedFontWeight = destination === normalizedPath ? 900 : 400;
