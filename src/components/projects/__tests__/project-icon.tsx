@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 
 import { mockProjectIconMap } from "../../../../__utils__";
 import { ProjectIconName } from "../../../types";
@@ -13,11 +13,9 @@ describe("project icon", () => {
 
   it("renders the correct icons", () => {
     Object.values(ProjectIconName).forEach((name) => {
-      const { getByTestId } = render(
-        <ProjectIcon iconName={name} iconMap={mockProjectIconMap} />
-      );
-      expect(getByTestId(`${name}-icon`)).toBeVisible();
-      expect(getByTestId(`${name}-svg`)).toBeVisible();
+      render(<ProjectIcon iconName={name} iconMap={mockProjectIconMap} />);
+      expect(screen.getByTestId(`${name}-icon`)).toBeVisible();
+      expect(screen.getByTestId(`${name}-svg`)).toBeVisible();
       cleanup();
     });
   });
@@ -25,13 +23,13 @@ describe("project icon", () => {
   it("renders no icon if not properly configured", () => {
     const mockIconName = "MOCK_ICON";
 
-    const { queryByTestId } = render(
+    render(
       <ProjectIcon
         iconName={mockIconName as ProjectIconName}
         iconMap={mockProjectIconMap}
       />
     );
 
-    expect(queryByTestId(`${mockIconName}-svg`)).toBeNull();
+    expect(screen.queryByTestId(`${mockIconName}-svg`)).toBeNull();
   });
 });

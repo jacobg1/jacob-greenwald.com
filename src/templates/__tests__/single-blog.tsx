@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import * as Gatsby from "gatsby";
 
 import {
@@ -32,7 +32,7 @@ describe("blog list template", () => {
         <SingleBlog data={mockPost} {...mockPageProps} />
       );
 
-      const { getByText } = render(<Component />);
+      render(<Component />);
 
       const {
         post: {
@@ -41,8 +41,8 @@ describe("blog list template", () => {
         },
       } = mockPost;
 
-      expect(getByText(title)).toBeVisible();
-      expect(getByText(parseHtmlString(html))).toBeVisible();
+      expect(screen.getByText(title)).toBeVisible();
+      expect(screen.getByText(parseHtmlString(html))).toBeVisible();
 
       cleanup();
     });
@@ -58,27 +58,27 @@ describe("blog list template", () => {
       <SingleBlog data={singleBlogTwo} {...pagePropsTwo} />
     );
 
-    const { getByText: getByTextOne, queryByText } = render(<ComponentOne />);
+    render(<ComponentOne />);
 
-    expect(getByTextOne("next")).toBeVisible();
-    expect(getByTextOne("next").parentElement).toHaveAttribute(
+    expect(screen.getByText("next")).toBeVisible();
+    expect(screen.getByText("next").parentElement).toHaveAttribute(
       "href",
       singleBlogOne.next?.fields.slug
     );
-    expect(queryByText("prev")).toBeNull();
+    expect(screen.queryByText("prev")).toBeNull();
 
     cleanup();
 
-    const { getByText: getByTextTwo } = render(<ComponentTwo />);
+    render(<ComponentTwo />);
 
-    expect(getByTextTwo("next")).toBeVisible();
-    expect(getByTextTwo("prev")).toBeVisible();
+    expect(screen.getByText("next")).toBeVisible();
+    expect(screen.getByText("prev")).toBeVisible();
 
-    expect(getByTextOne("next").parentElement).toHaveAttribute(
+    expect(screen.getByText("next").parentElement).toHaveAttribute(
       "href",
       singleBlogTwo.next?.fields.slug
     );
-    expect(getByTextOne("prev").parentElement).toHaveAttribute(
+    expect(screen.getByText("prev").parentElement).toHaveAttribute(
       "href",
       singleBlogTwo.previous?.fields.slug
     );

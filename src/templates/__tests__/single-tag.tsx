@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import * as Gatsby from "gatsby";
 
 import {
@@ -36,15 +36,13 @@ describe("single tag", () => {
   });
 
   it("renders blog list and title properly", () => {
-    const { getByText } = render(
-      <SingleTag data={mockTagPagePosts} {...mockPageProps} />
-    );
+    render(<SingleTag data={mockTagPagePosts} {...mockPageProps} />);
 
     const {
       allMarkdownRemark: { edges: posts },
     } = mockTagPagePosts;
 
-    expect(getByText(tagTitle)).toBeVisible();
+    expect(screen.getByText(tagTitle)).toBeVisible();
 
     posts.forEach(
       ({
@@ -53,9 +51,9 @@ describe("single tag", () => {
           frontmatter: { title, date, description },
         },
       }) => {
-        expect(getByText(title)).toHaveAttribute("href", slug);
-        expect(getByText(date)).toBeVisible();
-        expect(getByText(description)).toBeVisible();
+        expect(screen.getByText(title)).toHaveAttribute("href", slug);
+        expect(screen.getByText(date)).toBeVisible();
+        expect(screen.getByText(description)).toBeVisible();
       }
     );
   });

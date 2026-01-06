@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { SliderDirection } from "../../../types";
@@ -15,7 +15,7 @@ describe("project slider arrow", () => {
     const user = userEvent.setup();
     const mockClickHandler = jest.fn();
 
-    const { getByTestId } = render(
+    render(
       <ProjectSliderArrow
         handleChange={mockClickHandler}
         value={0}
@@ -24,7 +24,7 @@ describe("project slider arrow", () => {
       />
     );
 
-    await user.click(getByTestId("ChevronRightIcon"));
+    await user.click(screen.getByTestId("ChevronRightIcon"));
     expect(mockClickHandler).toHaveBeenCalledWith(1);
   });
 
@@ -32,7 +32,7 @@ describe("project slider arrow", () => {
     const user = userEvent.setup();
     const mockClickHandler = jest.fn();
 
-    const { getByTestId } = render(
+    render(
       <ProjectSliderArrow
         handleChange={mockClickHandler}
         value={3}
@@ -41,7 +41,7 @@ describe("project slider arrow", () => {
       />
     );
 
-    await user.click(getByTestId("ChevronLeftIcon"));
+    await user.click(screen.getByTestId("ChevronLeftIcon"));
     expect(mockClickHandler).toHaveBeenCalledWith(2);
   });
 });

@@ -1,5 +1,5 @@
 import { LocationProvider } from "@reach/router";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import * as Gatsby from "gatsby";
 
 import {
@@ -36,8 +36,8 @@ describe("wrappers", () => {
   });
 
   it("wrapRootElement properly renders component", () => {
-    const { getByText } = render(RootWrappedElement(testText, wrapRootElement));
-    expect(getByText(testText)).toBeInTheDocument();
+    render(RootWrappedElement(testText, wrapRootElement));
+    expect(screen.getByText(testText)).toBeInTheDocument();
   });
 
   it("wrapRootElement renders default container if theme is unavailable", () => {
@@ -47,18 +47,17 @@ describe("wrappers", () => {
       .spyOn(LocalStorageHook, "useLocalStorage")
       .mockImplementation(() => ["", jest.fn()]);
 
-    const { getByText } = render(RootWrappedElement(testText, wrapRootElement));
+    render(RootWrappedElement(testText, wrapRootElement));
 
-    const element = getByText(testText);
+    const element = screen.getByText(testText);
     expect(element).toBeInTheDocument();
     expect(element.parentElement).toHaveClass(expectedClass);
   });
 
   it("wrapPageElement renders properly", () => {
-    const { getByText } = render(
-      PageWrappedElement(testText, wrapPageElement),
-      { wrapper: LocationProvider }
-    );
-    expect(getByText(testText)).toBeInTheDocument();
+    render(PageWrappedElement(testText, wrapPageElement), {
+      wrapper: LocationProvider,
+    });
+    expect(screen.getByText(testText)).toBeInTheDocument();
   });
 });

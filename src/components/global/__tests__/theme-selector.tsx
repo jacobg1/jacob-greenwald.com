@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { SiteTheme } from "../../../types";
@@ -14,15 +14,15 @@ describe("theme selector", () => {
 
   it("theme selector opens and closes on theme selection", async () => {
     const user = userEvent.setup();
-    const { getByText, queryByText } = render(<ThemeSelector />);
+    render(<ThemeSelector />);
 
-    await user.click(getByText("Change Theme"));
+    await user.click(screen.getByText("Change Theme"));
 
     const themeName = capitalizeWord(SiteTheme.GOLD);
-    const themeToSelect = getByText(themeName);
+    const themeToSelect = screen.getByText(themeName);
 
     expect(themeToSelect).toBeInTheDocument();
     await user.click(themeToSelect);
-    expect(queryByText(themeName)).not.toBeInTheDocument();
+    expect(screen.queryByText(themeName)).not.toBeInTheDocument();
   });
 });
