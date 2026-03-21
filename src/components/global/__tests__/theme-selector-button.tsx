@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { testThemeSelector } from "../../../../__utils__";
@@ -25,7 +25,7 @@ describe("theme selector button", () => {
     const themeOption = SiteTheme.CAKE;
     const selectedTheme = SiteTheme.CLASSIC;
 
-    const { getByText } = render(
+    render(
       <ThemeSelectorButton
         themeOption={themeOption}
         selectedTheme={selectedTheme}
@@ -34,7 +34,7 @@ describe("theme selector button", () => {
       />
     );
 
-    const label = getByText(capitalizeWord(themeOption));
+    const label = screen.getByText(capitalizeWord(themeOption));
 
     await user.click(label);
 
@@ -48,7 +48,7 @@ describe("theme selector button", () => {
     const themeOption = SiteTheme.CLASSIC;
     const selectedTheme = SiteTheme.CLASSIC;
 
-    const { getByText } = render(
+    render(
       <ThemeSelectorButton
         themeOption={themeOption}
         selectedTheme={selectedTheme}
@@ -57,7 +57,7 @@ describe("theme selector button", () => {
       />
     );
 
-    const label = getByText(capitalizeWord(themeOption));
+    const label = screen.getByText(capitalizeWord(themeOption));
 
     await user.click(label);
 

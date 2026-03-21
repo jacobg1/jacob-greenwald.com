@@ -1,15 +1,14 @@
 import { type ReactElement, createElement } from "react";
 
+import { screen } from "@testing-library/react";
 import type { GatsbyBrowser } from "gatsby";
 
 import { getMockPageProps } from "./gatsby-props";
 import type {
-  TextMatcher,
   MockMetadata,
   NextOrPrev,
   PostNumWord,
   NextOrPrevBlogCreate,
-  QueryMatcher,
   SetupLocalStore,
 } from "./test-types";
 import type {
@@ -46,21 +45,23 @@ export function updateProjectOrder(
   };
 }
 
-export function testProject(
-  getByText: TextMatcher,
-  getByTestId: TextMatcher,
-  {
-    node: {
-      html,
-      frontmatter: { title, iconName, app, repo },
-    },
-  }: ProjectNode
-): void {
-  expect(getByText(title)).toBeVisible();
-  expect(getByText(parseHtmlString(html))).toBeVisible();
-  expect(getByTestId(`${iconName}-icon`)).toBeVisible();
-  expect(getByTestId(`${title}-app-button`)).toHaveAttribute("href", app);
-  expect(getByTestId(`${title}-repo-button`)).toHaveAttribute("href", repo);
+export function testProject({
+  node: {
+    html,
+    frontmatter: { title, iconName, app, repo },
+  },
+}: ProjectNode): void {
+  expect(screen.getByText(title)).toBeVisible();
+  expect(screen.getByText(parseHtmlString(html))).toBeVisible();
+  expect(screen.getByTestId(`${iconName}-icon`)).toBeVisible();
+  expect(screen.getByTestId(`${title}-app-button`)).toHaveAttribute(
+    "href",
+    app
+  );
+  expect(screen.getByTestId(`${title}-repo-button`)).toHaveAttribute(
+    "href",
+    repo
+  );
 }
 
 export function testMetadata(
@@ -76,22 +77,18 @@ export function testMetadata(
   // TODO - test more meta tags?
 }
 
-export function testBlogListItem(
-  getByText: TextMatcher,
-  queryAllByTestId: QueryMatcher,
-  {
-    fields: { slug },
-    frontmatter: { title, date, description, tags },
-  }: BlogListNode
-): void {
-  expect(getByText(title)).toHaveAttribute("href", slug);
-  expect(getByText(date)).toBeVisible();
-  expect(getByText(description)).toBeVisible();
+export function testBlogListItem({
+  fields: { slug },
+  frontmatter: { title, date, description, tags },
+}: BlogListNode): void {
+  expect(screen.getByText(title)).toHaveAttribute("href", slug);
+  expect(screen.getByText(date)).toBeVisible();
+  expect(screen.getByText(description)).toBeVisible();
 
   tags.forEach((tag) => {
     const testId = `tag-name-${tag}`;
     const tagHref = `/tags/${tag.toLocaleLowerCase()}/`;
-    const tagLinks = queryAllByTestId(testId);
+    const tagLinks = screen.queryAllByTestId(testId);
 
     if (!tagLinks?.length) {
       throw new Error("Failed to find tag links");

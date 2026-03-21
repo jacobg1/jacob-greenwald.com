@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import * as Gatsby from "gatsby";
 
 import {
@@ -27,11 +27,9 @@ describe("tags page", () => {
   });
 
   it("renders title and tags properly", () => {
-    const { getByText, getByTestId } = render(
-      <TagsPage data={mockTags} {...mockPageProps} />
-    );
+    render(<TagsPage data={mockTags} {...mockPageProps} />);
 
-    expect(getByText(title)).toBeVisible();
+    expect(screen.getByText(title)).toBeVisible();
 
     const {
       tagsData: { group: tags },
@@ -39,10 +37,10 @@ describe("tags page", () => {
 
     for (const { fieldValue, totalCount } of tags) {
       const totalCountText = `${totalCount} ${pluralWord(totalCount, "post")}`;
-      expect(getByText(totalCountText)).toBeVisible();
-      expect(getByText(fieldValue)).toBeVisible();
+      expect(screen.getByText(totalCountText)).toBeVisible();
+      expect(screen.getByText(fieldValue)).toBeVisible();
 
-      const link = getByTestId(`${fieldValue}-tag-link`);
+      const link = screen.getByTestId(`${fieldValue}-tag-link`);
       expect(link).toHaveAttribute("href", createTagPageLink(fieldValue));
     }
   });

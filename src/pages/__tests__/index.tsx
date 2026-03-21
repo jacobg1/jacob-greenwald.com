@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import * as Gatsby from "gatsby";
 
 import {
@@ -39,25 +39,21 @@ describe("projects page", () => {
   it("renders content and title properly", () => {
     useStaticQuery.mockImplementation(() => mockProjects);
 
-    const { getByText } = render(
-      <ProjectsPage data={data} {...mockPageProps} />
-    );
+    render(<ProjectsPage data={data} {...mockPageProps} />);
 
-    expect(getByText(title)).toBeVisible();
-    expect(getByText(testContent)).toBeVisible();
+    expect(screen.getByText(title)).toBeVisible();
+    expect(screen.getByText(testContent)).toBeVisible();
   });
 
   it("projects are rendered properly", () => {
     useStaticQuery.mockImplementation(() => mockProjects);
 
-    const { getByText, getByRole, getByTestId } = render(
-      <ProjectsPage data={data} {...mockPageProps} />
-    );
+    render(<ProjectsPage data={data} {...mockPageProps} />);
 
-    testProject(getByText, getByTestId, projectOne);
+    testProject(projectOne);
 
-    fireEvent.click(getByRole("tab", { name: secondProjectLabel }));
-    testProject(getByText, getByTestId, projectTwo);
+    fireEvent.click(screen.getByRole("tab", { name: secondProjectLabel }));
+    testProject(projectTwo);
   });
 
   it("projects respect the order property", () => {
@@ -71,14 +67,12 @@ describe("projects page", () => {
       },
     }));
 
-    const { getByText, getByRole, getByTestId } = render(
-      <ProjectsPage data={data} {...mockPageProps} />
-    );
+    render(<ProjectsPage data={data} {...mockPageProps} />);
 
-    testProject(getByText, getByTestId, projectTwo);
+    testProject(projectTwo);
 
-    fireEvent.click(getByRole("tab", { name: secondProjectLabel }));
-    testProject(getByText, getByTestId, projectOne);
+    fireEvent.click(screen.getByRole("tab", { name: secondProjectLabel }));
+    testProject(projectOne);
   });
 
   it("renders metadata properly", () => {

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { getClipboardValue } from "../../../../__utils__";
@@ -16,28 +16,24 @@ describe("copy to clipboard", () => {
   it("copies value on click", async () => {
     const user = userEvent.setup();
 
-    const { getByTestId, queryByTestId } = render(
-      <CopyToClipboard isMobileHeader={false} value={testValue} />
-    );
+    render(<CopyToClipboard isMobileHeader={false} value={testValue} />);
 
-    await user.click(getByTestId("ContentCopyIcon"));
+    await user.click(screen.getByTestId("ContentCopyIcon"));
 
-    expect(getByTestId("LibraryAddCheckIcon")).toBeInTheDocument();
-    expect(queryByTestId("ContentCopyIcon")).toBeNull();
+    expect(screen.getByTestId("LibraryAddCheckIcon")).toBeInTheDocument();
+    expect(screen.queryByTestId("ContentCopyIcon")).toBeNull();
     expect(await getClipboardValue(navigator)).toBe(testValue);
   });
 
   it("clears value on clicking twice", async () => {
     const user = userEvent.setup();
 
-    const { getByTestId } = render(
-      <CopyToClipboard isMobileHeader={true} value={testValue} />
-    );
+    render(<CopyToClipboard isMobileHeader={true} value={testValue} />);
 
-    await user.click(getByTestId("ContentCopyIcon"));
+    await user.click(screen.getByTestId("ContentCopyIcon"));
     expect(await getClipboardValue(navigator)).toBe(testValue);
 
-    await user.click(getByTestId("LibraryAddCheckIcon"));
+    await user.click(screen.getByTestId("LibraryAddCheckIcon"));
     expect(await getClipboardValue(navigator)).toBe("");
   });
 
@@ -51,11 +47,9 @@ describe("copy to clipboard", () => {
       throw new Error("writeText failed");
     });
 
-    const { getByTestId } = render(
-      <CopyToClipboard isMobileHeader={false} value={testValue} />
-    );
+    render(<CopyToClipboard isMobileHeader={false} value={testValue} />);
 
-    await user.click(getByTestId("ContentCopyIcon"));
+    await user.click(screen.getByTestId("ContentCopyIcon"));
 
     expect(console.error).toHaveBeenCalled();
     expect(console.error).toHaveBeenCalledWith(Error("Failed to copy value"));

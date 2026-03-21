@@ -1,21 +1,6 @@
-import type {
-  Matcher,
-  MatcherOptions,
-  SelectorMatcherOptions,
-} from "@testing-library/react";
 import type { HeadProps, PageProps } from "gatsby";
 
 import type { SingleBlogProps } from "../src/types";
-
-export type TextMatcher = (
-  id: Matcher,
-  options?: SelectorMatcherOptions
-) => HTMLElement;
-
-export type QueryMatcher = (
-  id: Matcher,
-  options?: MatcherOptions
-) => HTMLElement[];
 
 export interface MockMetadata {
   title: string;

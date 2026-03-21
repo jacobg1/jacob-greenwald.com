@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import * as Gatsby from "gatsby";
 
 import {
@@ -40,10 +40,10 @@ describe("about", () => {
       },
     }));
 
-    const { getByText } = render(<AboutPage data={data} {...mockPageProps} />);
+    render(<AboutPage data={data} {...mockPageProps} />);
 
-    expect(getByText(title)).toBeVisible();
-    expect(getByText(testContent)).toBeVisible();
+    expect(screen.getByText(title)).toBeVisible();
+    expect(screen.getByText(testContent)).toBeVisible();
   });
 
   it("renders metadata properly", () => {

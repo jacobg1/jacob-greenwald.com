@@ -6,7 +6,7 @@ import {
   LocationProvider,
   navigate,
 } from "@reach/router";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as Gatsby from "gatsby";
 
@@ -38,13 +38,13 @@ describe("header", () => {
   });
 
   it("SiteHeader renders properly", () => {
-    const { getByText } = render(
+    render(
       <LocationProvider history={mockHistory}>
         <SiteHeader />
       </LocationProvider>
     );
 
-    expect(getByText("Software Engineer")).toBeInTheDocument();
+    expect(screen.getByText("Software Engineer")).toBeInTheDocument();
   });
 
   it("SiteHeader mobile menu opens on click", async () => {
@@ -56,16 +56,16 @@ describe("header", () => {
       },
     });
 
-    const { getByLabelText, getByTestId } = render(
+    render(
       <LocationProvider history={mockHistory}>
         <SiteHeader />
       </LocationProvider>
     );
 
-    const menuIcon = getByLabelText("menu");
+    const menuIcon = screen.getByLabelText("menu");
     await user.click(menuIcon);
 
-    const closeMenuIcon = getByTestId("HighlightOffIcon");
+    const closeMenuIcon = screen.getByTestId("HighlightOffIcon");
     expect(closeMenuIcon).toBeInTheDocument();
 
     await user.click(closeMenuIcon);
