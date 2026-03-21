@@ -12,7 +12,7 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "clean": "gatsby clean && mkdir .cache",
     "typecheck": "tsc --noEmit",
     "test": "jest",
     "test:watch": "npm run test -- --watchAll"
@@ -24,7 +24,7 @@
     "@mui/icons-material": "^7.1.0",
     "@mui/material": "^7.1.0",
     "@svgr/webpack": "^8.1.0",
-    "gatsby": "^5.15.0",
+    "gatsby": "5.14.1",
     "gatsby-omni-font-loader": "^2.0.2",
     "gatsby-plugin-emotion": "^8.14.0",
     "gatsby-plugin-image": "^3.13.1",
@@ -82,7 +82,14 @@
   "overrides": {
     "cookie": "1.1.1",
     "tmp": "0.2.5",
-    "qs": "6.14.1",
-    "diff": "8.0.3"
+    "qs": "6.15.0",
+    "serialize-javascript": "7.0.4",
+    "path-to-regexp": "0.1.12",
+    "immutable": "3.8.3",
+    "file-type": "21.3.3",
+    "@parcel/core": "2.16.4",
+    "@parcel/reporter-dev-server": "2.16.4",
+    "@parcel/cache": "2.16.4",
+    "@parcel/transformer-js": "2.16.4"
   }
 }
