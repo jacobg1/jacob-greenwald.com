@@ -90,6 +90,7 @@
     "@parcel/core": "2.16.4",
     "@parcel/reporter-dev-server": "2.16.4",
     "@parcel/cache": "2.16.4",
-    "@parcel/transformer-js": "2.16.4"
+    "@parcel/transformer-js": "2.16.4",
+    "multer": "2.1.1"
   }
 }
