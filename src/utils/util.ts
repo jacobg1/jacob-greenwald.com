@@ -62,3 +62,17 @@ export function historyListener(onClick: () => void): HistoryListener {
     if (action === "PUSH") onClick();
   };
 }
+
+export const comparePath = (destination: string, pathname: string): boolean => {
+  if (pathname === "/") return destination === pathname;
+
+  const normalizePath = pathname.endsWith("/")
+    ? pathname.slice(0, -1)
+    : pathname;
+
+  const isBlogPath =
+    includesBlog(normalizePath, destination) ||
+    includesTags(normalizePath, destination);
+
+  return destination === normalizePath || isBlogPath;
+};
