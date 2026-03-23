@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { JSX, useContext } from "react";
 
 import { EmojiContainer } from "./emoji-container";
 import { SiteThemeContext } from "../../../context/site-theme-context";

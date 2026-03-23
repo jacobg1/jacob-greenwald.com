@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { JSX, type ReactNode } from "react";
 
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -52,7 +52,7 @@ export const ButtonLink = ({
         href={linkHref}
         target="_blank"
         variant="outlined"
-        startIcon={icon}
+        startIcon={icon as ReactNode}
         rel="noopener noreferrer"
         data-testid={testId}
       >

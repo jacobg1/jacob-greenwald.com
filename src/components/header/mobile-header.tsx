@@ -1,4 +1,4 @@
-import { default as React, useEffect } from "react";
+import React, { JSX, useEffect } from "react";
 
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import type { SxProps } from "@mui/material";

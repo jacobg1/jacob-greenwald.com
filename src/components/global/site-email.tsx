@@ -1,11 +1,11 @@
-import React from "react";
+import React, { JSX } from "react";
 
 import type { SxProps } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
 import { CopyToClipboard } from "./copy-to-clipboard";
 import { useMetadataQuery } from "../../hooks/use-metadata-query";
-import type { SiteMetadata, SiteEmailProps } from "../../types";
+import type { SiteEmailProps, SiteMetadata } from "../../types";
 
 const emailStyles: SxProps = {
   display: "flex",

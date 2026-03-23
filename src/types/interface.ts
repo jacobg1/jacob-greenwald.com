@@ -1,4 +1,4 @@
-import type { ReactNode, FunctionComponent, SVGAttributes } from "react";
+import type { JSX, FunctionComponent, ReactNode, SVGAttributes } from "react";
 
 import type { IGatsbyImageData } from "gatsby-plugin-image";
 

@@ -1,4 +1,4 @@
-import { default as React, useState } from "react";
+import React, { JSX, useState } from "react";
 
 import DensityMediumSharpIcon from "@mui/icons-material/DensityMediumSharp";
 import type { SxProps } from "@mui/material";

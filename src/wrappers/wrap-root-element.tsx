@@ -1,4 +1,4 @@
-import React, { useMemo, type ReactElement } from "react";
+import React, { JSX, useMemo, type ReactElement } from "react";
 
 import { ThemeProvider } from "@emotion/react";
 import Box from "@mui/material/Box";

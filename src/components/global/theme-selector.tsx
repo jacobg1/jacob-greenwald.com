@@ -1,4 +1,4 @@
-import React, { useContext, useState, MouseEvent } from "react";
+import React, { JSX, type MouseEvent, useContext, useState } from "react";
 
 import ContrastIcon from "@mui/icons-material/Contrast";
 import { type SxProps } from "@mui/material";

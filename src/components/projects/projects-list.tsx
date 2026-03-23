@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { JSX, useState } from "react";
 
 import { graphql, useStaticQuery } from "gatsby";
 
@@ -13,7 +13,7 @@ export const ProjectsList = (): JSX.Element => {
       pageInfo: { itemCount: numProjects },
     },
   } = useStaticQuery<ProjectsListContent>(projectsQuery);
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const tabLabels = projectList.map(
     ({

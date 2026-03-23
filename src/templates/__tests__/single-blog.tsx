@@ -1,11 +1,11 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import { cleanup, render, screen } from "@testing-library/react";
 import * as Gatsby from "gatsby";
 
 import {
-  getMockPageProps,
   getMockHeadProps,
+  getMockPageProps,
   mockMetadata,
   mockSingleBlogPosts,
   parseHtmlString,
