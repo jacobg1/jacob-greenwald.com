@@ -1,12 +1,12 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { useLocation } from "@reach/router";
 import { Link as InternalLink } from "gatsby";
 
-import { NavLinkList, NavLinkItem } from "../../types";
-import { includesBlog, includesTags } from "../../utils";
+import type { NavLinkItem, NavLinkList } from "../../types";
+import { comparePath } from "../../utils";
 
 export const NavLink = ({
   destination,
@@ -14,20 +14,6 @@ export const NavLink = ({
   newTab,
 }: NavLinkItem): JSX.Element => {
   const location = useLocation();
-
-  const comparePath = (destination: string, pathname: string): boolean => {
-    if (pathname === "/") return destination === pathname;
-
-    const normalizePath = pathname.endsWith("/")
-      ? pathname.slice(0, -1)
-      : pathname;
-
-    const isBlogPath =
-      includesBlog(normalizePath, destination) ||
-      includesTags(normalizePath, destination);
-
-    return destination === normalizePath || isBlogPath;
-  };
 
   return (
     <Box

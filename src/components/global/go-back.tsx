@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import KeyboardReturnOutlinedIcon from "@mui/icons-material/KeyboardReturnOutlined";
 import type { SxProps } from "@mui/material";

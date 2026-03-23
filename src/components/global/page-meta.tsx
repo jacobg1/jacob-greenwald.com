@@ -1,13 +1,7 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import { useMetadataQuery } from "../../hooks/use-metadata-query";
-import { SiteMetadata } from "../../types";
-
-export interface PageMetaProps {
-  metaTitle?: string;
-  metaDescription?: string;
-  slug?: string;
-}
+import type { PageMetaProps, SiteMetadata } from "../../types";
 
 export const PageMeta = ({
   metaDescription,

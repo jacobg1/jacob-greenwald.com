@@ -1,2 +1,2 @@
-export { wrapRootElement, wrapPageElement } from "./src/wrappers";
+export { wrapPageElement, wrapRootElement } from "./src/wrappers";
 import "prismjs/themes/prism-okaidia.min.css";

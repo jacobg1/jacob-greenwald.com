@@ -1,14 +1,14 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
-import { graphql, type PageProps, navigate, type HeadProps } from "gatsby";
+import { graphql, navigate, type HeadProps, type PageProps } from "gatsby";
 
 import { BlogListItem } from "../components/blog/blog-list-item";
 import { PageMeta } from "../components/global/page-meta";
 import { TitleWithDivider } from "../components/global/title-with-divider";
-import type { BlogsListProps, BlogListContext } from "../types";
+import type { BlogListContext, BlogsListProps } from "../types";
 
 const blogListStyles: SxProps = {
   maxWidth: "800px",
@@ -82,7 +82,9 @@ export const pageQuery = graphql`
 
 export default BlogListPage;
 
-export const Head = ({ location }: HeadProps<BlogsListProps>): JSX.Element => {
+export const Head = ({
+  location,
+}: HeadProps<BlogsListProps>): React.JSX.Element => {
   return (
     <PageMeta
       metaTitle="Blog"

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";

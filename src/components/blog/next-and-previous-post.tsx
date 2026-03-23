@@ -1,9 +1,9 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
 
-import { PreviousPostLink, NextPostLink } from "./post-links";
+import { NextPostLink, PreviousPostLink } from "./post-links";
 import type { NextAndPreviousPostProps } from "../../types";
 
 const nextAndPreviousPostStyles: SxProps = {

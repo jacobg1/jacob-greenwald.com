@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import AdsClickIcon from "@mui/icons-material/AdsClick";
 import type { SxProps } from "@mui/material";

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX, type ReactNode } from "react";
 
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,7 +10,7 @@ import { styleOverridesResolver } from "../../utils";
 import { SiteHeader } from "../header/site-header";
 
 type PageProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const PageContainer = styled("div", {

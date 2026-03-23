@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TerminalIcon from "@mui/icons-material/Terminal";

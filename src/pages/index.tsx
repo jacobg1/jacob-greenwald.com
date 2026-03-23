@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -47,4 +47,4 @@ export const pageQuery = graphql`
 
 export default ProjectsPage;
 
-export const Head = (): JSX.Element => <PageMeta />;
+export const Head = (): React.JSX.Element => <PageMeta />;
