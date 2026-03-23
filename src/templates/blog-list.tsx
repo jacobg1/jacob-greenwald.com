@@ -82,9 +82,7 @@ export const pageQuery = graphql`
 
 export default BlogListPage;
 
-export const Head = ({
-  location,
-}: HeadProps<BlogsListProps>): React.JSX.Element => {
+export const Head = ({ location }: HeadProps<BlogsListProps>): JSX.Element => {
   return (
     <PageMeta
       metaTitle="Blog"

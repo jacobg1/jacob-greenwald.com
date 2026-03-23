@@ -47,4 +47,4 @@ export const pageQuery = graphql`
 
 export default ProjectsPage;
 
-export const Head = (): React.JSX.Element => <PageMeta />;
+export const Head = (): JSX.Element => <PageMeta />;
