@@ -18,6 +18,13 @@ describe("sanitzer", () => {
     ).toBe(html);
   });
 
+  it("contentSanitizer removes script tags", () => {
+    const html = `<div>test<script src="./malicious-code.js" /></div>`;
+    const expected = "<div>test</div>";
+
+    expect(contentSanitizer(html)).toBe(expected);
+  });
+
   it("allowedContentAttributes returns the correct attributes", () => {
     const allowedAttributes = ["class", "data-language"];
 
