@@ -12,10 +12,6 @@ import {
 } from "../util";
 
 describe("utils", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("includesBlog works properly", () => {
     expect(includesBlog("/blog/", "/blog/")).toBe(true);
     expect(includesBlog("/blog/test/", "/blog/")).toBe(true);

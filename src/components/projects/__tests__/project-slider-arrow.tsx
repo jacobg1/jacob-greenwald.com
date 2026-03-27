@@ -7,10 +7,6 @@ import { SliderDirection } from "../../../types";
 import { ProjectSliderArrow } from "../project-slider-arrow";
 
 describe("project slider arrow", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("clicking on right arrow works", async () => {
     const user = userEvent.setup();
     const mockClickHandler = jest.fn();

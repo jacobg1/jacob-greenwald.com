@@ -12,7 +12,7 @@ import { mockMetadata, mockNavLinks } from "../../../../__utils__";
 import { useNavLinksQuery } from "../../../hooks/use-navlinks-query";
 import { Page } from "../page";
 
-const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+let useStaticQuery: jest.SpyInstance;
 
 const mockQueryResults = {
   site: { siteMetadata: mockMetadata },
@@ -23,11 +23,9 @@ jest.mock("../../../hooks/use-navlinks-query", () => ({
 }));
 
 describe("global page", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   beforeEach(() => {
+    useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+
     (useNavLinksQuery as jest.Mock).mockImplementation(() => mockNavLinks);
     useStaticQuery.mockImplementation(() => mockQueryResults);
   });

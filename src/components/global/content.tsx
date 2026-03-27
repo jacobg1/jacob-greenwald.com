@@ -1,8 +1,7 @@
 import React, { JSX } from "react";
 
-import DOMPurify from "isomorphic-dompurify";
-
 import type { HtmlString } from "../../types";
+import { contentSanitizer, allowedContentAttributes } from "../../utils";
 
 type ContentProps = {
   content: HtmlString;
@@ -14,7 +13,9 @@ export const Content = ({ content, className }: ContentProps): JSX.Element => {
     <div
       className={className || "page-content"}
       dangerouslySetInnerHTML={{
-        __html: DOMPurify.sanitize(content, { ADD_ATTR: ["target"] }),
+        __html: contentSanitizer(content, {
+          allowedAttributes: allowedContentAttributes(),
+        }),
       }}
     />
   );

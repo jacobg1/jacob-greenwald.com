@@ -17,7 +17,7 @@ jest.mock("../../hooks/use-navlinks-query", () => ({
   useNavLinksQuery: jest.fn(),
 }));
 
-const mockUseStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+let mockUseStaticQuery: jest.SpyInstance;
 
 const mockMetadataResponse = {
   site: { siteMetadata: mockMetadata },
@@ -26,11 +26,9 @@ const mockMetadataResponse = {
 const testText = "Test text";
 
 describe("wrappers", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   beforeEach(() => {
+    mockUseStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+
     (useNavLinksQuery as jest.Mock).mockImplementation(() => mockNavLinks);
     mockUseStaticQuery.mockImplementation(() => mockMetadataResponse);
   });

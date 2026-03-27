@@ -8,10 +8,6 @@ import { capitalizeWord } from "../../../utils";
 import { ThemeSelector } from "../theme-selector";
 
 describe("theme selector", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("theme selector opens and closes on theme selection", async () => {
     const user = userEvent.setup();
     render(<ThemeSelector />);
