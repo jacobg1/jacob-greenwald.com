@@ -14,9 +14,6 @@ import {
 import type { BlogsListProps, BlogListContext } from "../../types";
 import BlogListPage, { Head } from "../blog-list";
 
-const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
-const navigate = jest.spyOn(Gatsby, "navigate");
-
 const title = "Blog Posts";
 
 const mockPageContext = {
@@ -37,10 +34,6 @@ const data = {
 };
 
 describe("blog list template", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("renders title and blog list", () => {
     render(<BlogListPage data={data} {...mockPageProps} />);
     expect(screen.getByText(title)).toBeVisible();
@@ -69,6 +62,8 @@ describe("blog list template", () => {
   });
 
   it("can change pages", () => {
+    const navigate = jest.spyOn(Gatsby, "navigate");
+
     render(<BlogListPage data={data} {...mockPageProps} />);
 
     [1, 2, 3].forEach((num) => {
@@ -97,6 +92,8 @@ describe("blog list template", () => {
   });
 
   it("renders metadata properly", () => {
+    const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+
     useStaticQuery.mockImplementation(() => ({
       site: { siteMetadata: mockMetadata },
     }));

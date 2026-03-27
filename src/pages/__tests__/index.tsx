@@ -16,7 +16,7 @@ import {
 import type { PageContent } from "../../types";
 import ProjectsPage, { Head } from "../index";
 
-const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+let useStaticQuery: jest.SpyInstance;
 
 const title = "Projects page title";
 const testContent = "project page html";
@@ -32,8 +32,8 @@ const data = {
 const mockPageProps = getMockPageProps<PageContent>(data);
 
 describe("projects page", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
+  beforeEach(() => {
+    useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
   });
 
   it("renders content and title properly", () => {

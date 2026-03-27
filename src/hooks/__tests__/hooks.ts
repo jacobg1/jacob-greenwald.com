@@ -7,13 +7,8 @@ import { useLocalStorage } from "../use-local-storage";
 import { useNavLinksQuery } from "../use-navlinks-query";
 
 const testKey = "test-key";
-const mockUseStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
 
 describe("hooks", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("useLocalStorage works properly", () => {
     const { result } = renderHook(() =>
       useLocalStorage(testKey, SiteTheme.SILVER, "")
@@ -56,6 +51,8 @@ describe("hooks", () => {
   });
 
   it("useNavLinksQuery returns proper the data", () => {
+    const mockUseStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+
     const input = {
       markdownRemark: {
         frontmatter: { navLinks: mockNavLinks },

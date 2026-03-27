@@ -13,8 +13,6 @@ import {
 import type { SingleTagContext, SingleTagPageProps } from "../../types";
 import SingleTag, { Head } from "../single-tag";
 
-const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
-
 const testTag = "Test Tag";
 const testTagSlug = `/tags/test-tag`;
 const tagTitle = `Tag - ${testTag}`;
@@ -31,10 +29,6 @@ const mockHeadProps = getMockHeadProps<SingleTagContext>(
 );
 
 describe("single tag", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("renders blog list and title properly", () => {
     render(<SingleTag data={mockTagPagePosts} {...mockPageProps} />);
 
@@ -59,6 +53,8 @@ describe("single tag", () => {
   });
 
   it("renders metadata properly", () => {
+    const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+
     useStaticQuery.mockImplementation(() => ({
       site: { siteMetadata: mockMetadata },
     }));

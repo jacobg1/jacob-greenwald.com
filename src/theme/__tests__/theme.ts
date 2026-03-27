@@ -3,10 +3,6 @@ import { SiteTheme } from "../../types";
 import { getTheme } from "../theme";
 
 describe("get theme", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("returns the correct theme", () => {
     Object.values(SiteTheme).forEach((siteTheme) => {
       const theme = getTheme(siteTheme);

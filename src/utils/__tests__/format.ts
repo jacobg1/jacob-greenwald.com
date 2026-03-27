@@ -6,10 +6,6 @@ import {
 } from "../format";
 
 describe("format utils", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("capitalizeWord works properly", () => {
     const word = capitalizeWord("test");
     expect(word).toBe("Test");

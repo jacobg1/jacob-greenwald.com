@@ -14,18 +14,12 @@ import type { TagsPageProps } from "../../types";
 import { createTagPageLink, pluralWord } from "../../utils";
 import TagsPage, { Head } from "../tags";
 
-const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
-
 const mockPageProps = getMockPageProps<TagsPageProps>(mockTags);
 const mockHeadProps = getMockHeadProps("/tags");
 
 const title = "All Tags";
 
 describe("tags page", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("renders title and tags properly", () => {
     render(<TagsPage data={mockTags} {...mockPageProps} />);
 
@@ -46,6 +40,8 @@ describe("tags page", () => {
   });
 
   it("renders metadata properly", () => {
+    const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+
     useStaticQuery.mockImplementation(() => ({
       site: { siteMetadata: mockMetadata },
     }));

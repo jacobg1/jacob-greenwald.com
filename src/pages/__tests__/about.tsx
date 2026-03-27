@@ -13,7 +13,7 @@ import {
 import type { PageContentWithImage } from "../../types";
 import AboutPage, { Head } from "../about";
 
-const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+let useStaticQuery: jest.SpyInstance;
 
 const title = "About page title";
 const testContent = "about page html";
@@ -29,8 +29,8 @@ const mockPageProps = getMockPageProps<PageContentWithImage>(data);
 const mockHeadProps = getMockHeadProps("/about");
 
 describe("about", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
+  beforeEach(() => {
+    useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
   });
 
   it("renders content and title properly", () => {

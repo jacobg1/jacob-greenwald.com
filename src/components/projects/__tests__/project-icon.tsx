@@ -7,10 +7,6 @@ import { ProjectIconName } from "../../../types";
 import { ProjectIcon } from "../project-icon";
 
 describe("project icon", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("renders the correct icons", () => {
     Object.values(ProjectIconName).forEach((name) => {
       render(<ProjectIcon iconName={name} iconMap={mockProjectIconMap} />);

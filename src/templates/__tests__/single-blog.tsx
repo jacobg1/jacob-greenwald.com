@@ -14,17 +14,11 @@ import {
 import { SingleBlogProps } from "../../types";
 import SingleBlog, { Head } from "../single-blog";
 
-const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
-
 const { singleBlogOne, singleBlogTwo } = mockSingleBlogPosts;
 
 const mockHeadProps = getMockHeadProps(singleBlogOne.post.fields.slug);
 
 describe("blog list template", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("renders blog content properly", () => {
     Object.values(mockSingleBlogPosts).forEach((mockPost) => {
       const mockPageProps = getMockPageProps<SingleBlogProps>(mockPost);
@@ -85,6 +79,8 @@ describe("blog list template", () => {
   });
 
   it("renders metadata properly", () => {
+    const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+
     useStaticQuery.mockImplementation(() => ({
       site: { siteMetadata: mockMetadata },
     }));
