@@ -88,6 +88,7 @@
     "@parcel/reporter-dev-server": "2.16.4",
     "@parcel/cache": "2.16.4",
     "@parcel/transformer-js": "2.16.4",
-    "webpack": "5.105.4"
+    "webpack": "5.105.4",
+    "path-to-regexp": "0.1.13"
   }
 }
