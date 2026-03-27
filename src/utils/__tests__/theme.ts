@@ -3,10 +3,6 @@ import type { ThemeMap } from "../../types";
 import { getThemeBackgroundColor, styleOverridesResolver } from "../theme";
 
 describe("theme utils", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("getThemeBackgroundColor works properly", () => {
     const output = getThemeBackgroundColor(testThemeMap as unknown as ThemeMap);
 

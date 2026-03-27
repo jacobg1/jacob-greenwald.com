@@ -11,10 +11,6 @@ import { mockNavLinks, normalizePath } from "../../../../__utils__";
 import { SiteLinks } from "../navigation";
 
 describe("navigation", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("properly renders nav links", () => {
     for (const href of ["/", "/test", "/test/"]) {
       const mockHistory = createHistory(createMemorySource(href));

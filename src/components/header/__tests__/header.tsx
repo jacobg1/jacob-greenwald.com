@@ -19,7 +19,7 @@ jest.mock("../../../hooks/use-navlinks-query", () => ({
   useNavLinksQuery: jest.fn(),
 }));
 
-const mockUseStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+let mockUseStaticQuery;
 
 const mockQueryResults = {
   site: { siteMetadata: mockMetadata },
@@ -28,11 +28,9 @@ const mockQueryResults = {
 const mockHistory = createHistory(createMemorySource("/test"));
 
 describe("header", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   beforeEach(() => {
+    mockUseStaticQuery = jest.spyOn(Gatsby, "useStaticQuery");
+
     (useNavLinksQuery as jest.Mock).mockImplementation(() => mockNavLinks);
     mockUseStaticQuery.mockImplementation(() => mockQueryResults);
   });

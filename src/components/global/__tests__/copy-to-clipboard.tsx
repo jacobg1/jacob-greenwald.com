@@ -9,10 +9,6 @@ import { CopyToClipboard } from "../copy-to-clipboard";
 const testValue = "test value";
 
 describe("copy to clipboard", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("copies value on click", async () => {
     const user = userEvent.setup();
 
