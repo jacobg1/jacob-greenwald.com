@@ -89,6 +89,8 @@
     "@parcel/cache": "2.16.4",
     "@parcel/transformer-js": "2.16.4",
     "webpack": "5.105.4",
-    "path-to-regexp": "0.1.13"
+    "path-to-regexp": "0.1.13",
+    "lodash": "^4.18.1",
+    "lmdb": "3.5.4"
   }
 }
