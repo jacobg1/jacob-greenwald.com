@@ -78,6 +78,7 @@
     "webpack-dev-middleware": "^8.0.1"
   },
   "overrides": {
+    "joi": "18.2.1",
     "cookie": "1.1.1",
     "tmp": "0.2.7",
     "qs": "6.15.2",
